@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Fri, 31 Jul 2020 02:45:30 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Blog Setup</title><link>https://engineerslifeforme.github.io/posts/blog-setup/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
+&lt;h2&gt;Purpose&lt;/h2&gt;
+&lt;p&gt;Documenting the process of making this blog and website.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="resources"&gt;
+&lt;h2&gt;Resources&lt;/h2&gt;
+&lt;p&gt;Resources I found helpful.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://jiaweizhuang.github.io/blog/nikola-guide/"&gt;Personal Website with Jupyter Support using Nikola and GitHub Page&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://getnikola.com/blog/"&gt;Nikola Blog&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;p&gt;I followed the instructions in resource #1 exactly with the following exceptions:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;I followed the style of &lt;code class="docutils literal"&gt;conf.py&lt;/code&gt; when adding notebook support:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-1"&gt;&lt;/a&gt;POSTS = (
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-2"&gt;&lt;/a&gt;    ("posts/*.rst", "posts", "post.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-3"&gt;&lt;/a&gt;    ("posts/*.md", "posts", "post.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-4"&gt;&lt;/a&gt;    ("posts/*.txt", "posts", "post.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-5"&gt;&lt;/a&gt;    ("posts/*.html", "posts", "post.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-6"&gt;&lt;/a&gt;    ("posts/*.ipynb", "posts", "post.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-7"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-8"&gt;&lt;/a&gt;PAGES = (
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-9"&gt;&lt;/a&gt;    ("pages/*.rst", "pages", "page.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-10"&gt;&lt;/a&gt;    ("pages/*.md", "pages", "page.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-11"&gt;&lt;/a&gt;    ("pages/*.txt", "pages", "page.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-12"&gt;&lt;/a&gt;    ("pages/*.html", "pages", "page.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-13"&gt;&lt;/a&gt;    ("pages/*.ipynb", "pages", "page.tmpl"),
+&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-14"&gt;&lt;/a&gt;)
+&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/blog-setup/</guid><pubDate>Fri, 31 Jul 2020 02:32:30 GMT</pubDate></item><item><title>Blog Repo Setup</title><link>https://engineerslifeforme.github.io/posts/blog-repo-setup/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="intro"&gt;
+&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;I have likely too many git repository options that I have created over time.
+Some private repos on bitbucket.  Repos for my LLC.  Public github repos.
+And then I made the github account and repo for this blog.&lt;/p&gt;
+&lt;p&gt;Most of the time I am not terribly worried about how my git user info is shown
+in the commit history, but given the intended public nature of this blog,
+I did want to be intentional about my commit content.&lt;/p&gt;
+&lt;p&gt;Specifically, I want to assure that the commits on the blog repo consistently
+show the email and user I have setup for this blog/repo.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="resources"&gt;
+&lt;h2&gt;Resources&lt;/h2&gt;
+&lt;p&gt;These are the resources I found helpful.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://crunchify.com/how-to-set-github-user-name-and-user-email-per-repository-different-config-for-different-repository/"&gt;How to set GitHub user.name and user.email per Repository? Different .config file for different Repository&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup"&gt;Getting Started - First-Time Git Setup&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;p&gt;I'm assuming the repo has not even been initialized.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;Initialize the repo.  My repo is in a folder called &lt;code class="docutils literal"&gt;blog&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_959e9d09982443e0b3e65c63c519ae19-1"&gt;&lt;/a&gt;cd blog
+&lt;a name="rest_code_959e9d09982443e0b3e65c63c519ae19-2"&gt;&lt;/a&gt;git init
+&lt;/pre&gt;&lt;ol class="arabic simple" start="2"&gt;
+&lt;li&gt;&lt;p&gt;Run the following git configuration commands (filling in your own details)&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_09e2c80436784df5974a5d27fec399b7-1"&gt;&lt;/a&gt;git config user.name "Creative Rigor, LLC"
+&lt;a name="rest_code_09e2c80436784df5974a5d27fec399b7-2"&gt;&lt;/a&gt;git config user.email creativerigor [at] gmail.com
+&lt;/pre&gt;&lt;p&gt;Format your email address properly.&lt;/p&gt;
+&lt;p&gt;Definitely do not use the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--global&lt;/span&gt;&lt;/code&gt; flag which will change the default
+user settings for all repos.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/blog-repo-setup/</guid><pubDate>Fri, 31 Jul 2020 01:54:13 GMT</pubDate></item><item><title>First Post</title><link>https://engineerslifeforme.github.io/posts/first-post/</link><dc:creator>An Engineer</dc:creator><description>&lt;div class="section" id="first-post"&gt;
+&lt;h2&gt;First Post&lt;/h2&gt;
+&lt;p&gt;This is my first post on the website.&lt;/p&gt;
+&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/first-post/</guid><pubDate>Mon, 27 Jul 2020 00:09:51 GMT</pubDate></item></channel></rss>

@@ -1,0 +1,4 @@
+Sitemap: https://engineerslifeforme.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: engineerslifeforme.github.io
