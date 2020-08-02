@@ -15,7 +15,7 @@
  </url>
  <url>
   <loc>https://engineerslifeforme.github.io/archive.html</loc>
-  <lastmod>2020-07-31T02:45:00Z</lastmod>
+  <lastmod>2020-08-02T02:41:00Z</lastmod>
  </url>
  <url>
   <loc>https://engineerslifeforme.github.io/categories/</loc>
@@ -48,5 +48,9 @@
  <url>
   <loc>https://engineerslifeforme.github.io/posts/first-post/</loc>
   <lastmod>2020-07-27T00:13:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://engineerslifeforme.github.io/posts/self-balancing-cost-assessment/</loc>
+  <lastmod>2020-08-02T02:19:00Z</lastmod>
  </url>
 </urlset>

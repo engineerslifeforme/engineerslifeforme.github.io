@@ -1,7 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Fri, 31 Jul 2020 02:45:30 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Blog Setup</title><link>https://engineerslifeforme.github.io/posts/blog-setup/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Sun, 02 Aug 2020 02:41:23 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Self-Balancing Cost Assessment</title><link>https://engineerslifeforme.github.io/posts/self-balancing-cost-assessment/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
+&lt;h2&gt;Purpose&lt;/h2&gt;
+&lt;p&gt;As is often the case for many of my DIY projects, one the first steps I
+take is a cost assessment and/or product search.  Is there already something
+that does what I want?  And how much does it cost?  What are the advantages
+and disadvantages to doing it myself?  I'll try to answer all those questions
+in a later post, but for now I'll look at cost.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="resources"&gt;
+&lt;h2&gt;Resources&lt;/h2&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://docs.google.com/spreadsheets/d/1bN2Ja4pdLizqrsrgqU1HztZrnHYeOAvUpPYcEwg-ae4/edit#gid=0"&gt;My Google Sheet&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="cost-assessment"&gt;
+&lt;h2&gt;Cost Assessment&lt;/h2&gt;
+&lt;p&gt;Assuming I move forward with this project, I will go into greater detail
+for each of these components, but just prices for now.  I try to include
+shipping on all items for completeness.&lt;/p&gt;
+&lt;table&gt;
+&lt;colgroup&gt;
+&lt;col style="width: 6%"&gt;
+&lt;col style="width: 2%"&gt;
+&lt;col style="width: 92%"&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;
+&lt;tr&gt;&lt;th class="head"&gt;&lt;p&gt;Item&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;$&lt;/p&gt;&lt;/th&gt;
+&lt;th class="head"&gt;&lt;p&gt;Link&lt;/p&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;Wheel&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;174&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.peipeiscooter.com/10inch-10-inch-10x6-00-5-5-wide-tyre-brushless-gearless-dc-wheel-hub-motor-balance-scooter-hub-motor-hally-motor-phub-188.html"&gt;PeiPei Scooter&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;VESC&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;150&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;&lt;a class="reference external" href="https://forum.esk8.news/t/cheap-focer-2-group-buy-batch-2/28726/210"&gt;Group Buy&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;Aluminum&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;25&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;&lt;a class="reference external" href="https://www.homedepot.com/p/Everbilt-1-in-x-36-in-Aluminum-Angle-with-1-8-in-Thick-801367/204273950"&gt;Home Depot&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;Battery&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;112&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;&lt;a class="reference external" href="https://liionwholesale.com/products/samsung-inr18650-25r-battery-genuine-tested-20a-2500mah-flat-top-wholesale-lot?variant=31113493053509&amp;amp;utm_campaign=googleshopping1&amp;amp;gclid=EAIaIQobChMIoIO8yYba6gIVYwiICR1cVAgkEAQYASABEgJAc_D_BwE"&gt;Li-Ion Wholesale&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;p&gt;Misc Electronics&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;p&gt;25&lt;/p&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;So a total of $486.&lt;/p&gt;
+&lt;p&gt;That's a pretty steep price tag for for something of this complexity.  I'm generally not shy
+about the price tag of DIY projects, but it is definitely dependent on how the project
+falls in my comfort zone.  This would have been a great project while I was in college, but
+I don't enough endless free time to debug.&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/self-balancing-cost-assessment/</guid><pubDate>Sun, 02 Aug 2020 01:59:44 GMT</pubDate></item><item><title>Blog Setup</title><link>https://engineerslifeforme.github.io/posts/blog-setup/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
 &lt;h2&gt;Purpose&lt;/h2&gt;
 &lt;p&gt;Documenting the process of making this blog and website.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://engineerslifeforme.github.io"&gt;EngineersLifeForMe&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="resources"&gt;
 &lt;h2&gt;Resources&lt;/h2&gt;
@@ -9,28 +69,43 @@
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://jiaweizhuang.github.io/blog/nikola-guide/"&gt;Personal Website with Jupyter Support using Nikola and GitHub Page&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://getnikola.com/blog/"&gt;Nikola Blog&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://nikola.readthedocs.io/en/latest/manual/#getting-started"&gt;Nikola ReadTheDocs&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/"&gt;How to blog with Jupyter (IPython) Notebook and Nikola&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instructions"&gt;
 &lt;h2&gt;Instructions&lt;/h2&gt;
 &lt;p&gt;I followed the instructions in resource #1 exactly with the following exceptions:&lt;/p&gt;
-&lt;ol class="arabic simple"&gt;
+&lt;p&gt;1. You may want to consider following my instructions on setting the git config
+for the repo here:&lt;/p&gt;
+&lt;ol class="arabic simple" start="2"&gt;
 &lt;li&gt;&lt;p&gt;I followed the style of &lt;code class="docutils literal"&gt;conf.py&lt;/code&gt; when adding notebook support:&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-1"&gt;&lt;/a&gt;POSTS = (
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-2"&gt;&lt;/a&gt;    ("posts/*.rst", "posts", "post.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-3"&gt;&lt;/a&gt;    ("posts/*.md", "posts", "post.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-4"&gt;&lt;/a&gt;    ("posts/*.txt", "posts", "post.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-5"&gt;&lt;/a&gt;    ("posts/*.html", "posts", "post.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-6"&gt;&lt;/a&gt;    ("posts/*.ipynb", "posts", "post.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-7"&gt;&lt;/a&gt;)
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-8"&gt;&lt;/a&gt;PAGES = (
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-9"&gt;&lt;/a&gt;    ("pages/*.rst", "pages", "page.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-10"&gt;&lt;/a&gt;    ("pages/*.md", "pages", "page.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-11"&gt;&lt;/a&gt;    ("pages/*.txt", "pages", "page.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-12"&gt;&lt;/a&gt;    ("pages/*.html", "pages", "page.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-13"&gt;&lt;/a&gt;    ("pages/*.ipynb", "pages", "page.tmpl"),
-&lt;a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-14"&gt;&lt;/a&gt;)
+&lt;pre class="code text"&gt;&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-1"&gt;&lt;/a&gt;POSTS = (
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-2"&gt;&lt;/a&gt;    ("posts/*.rst", "posts", "post.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-3"&gt;&lt;/a&gt;    ("posts/*.md", "posts", "post.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-4"&gt;&lt;/a&gt;    ("posts/*.txt", "posts", "post.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-5"&gt;&lt;/a&gt;    ("posts/*.html", "posts", "post.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-6"&gt;&lt;/a&gt;    ("posts/*.ipynb", "posts", "post.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-7"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-8"&gt;&lt;/a&gt;PAGES = (
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-9"&gt;&lt;/a&gt;    ("pages/*.rst", "pages", "page.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-10"&gt;&lt;/a&gt;    ("pages/*.md", "pages", "page.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-11"&gt;&lt;/a&gt;    ("pages/*.txt", "pages", "page.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-12"&gt;&lt;/a&gt;    ("pages/*.html", "pages", "page.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-13"&gt;&lt;/a&gt;    ("pages/*.ipynb", "pages", "page.tmpl"),
+&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-14"&gt;&lt;/a&gt;)
+&lt;/pre&gt;&lt;p&gt;3. I created an &lt;code class="docutils literal"&gt;About&lt;/code&gt; page similar to the examples Bio page.  Adding this page to
+the Navigation links did not work.  I had to use:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-1"&gt;&lt;/a&gt;NAVIGATION_LINKS = {
+&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-2"&gt;&lt;/a&gt;    DEFAULT_LANG: (
+&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-3"&gt;&lt;/a&gt;        ("/archive.html", "Archives"),
+&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-4"&gt;&lt;/a&gt;        ("/categories/index.html", "Tags"),
+&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-5"&gt;&lt;/a&gt;        ("/rss.xml", "RSS feed"),
+&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-6"&gt;&lt;/a&gt;        ("/index.html", "Home"),
+&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-7"&gt;&lt;/a&gt;        ("/pages/about/index.html", "About"),
+&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-8"&gt;&lt;/a&gt;    ),
+&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-9"&gt;&lt;/a&gt;}
 &lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/blog-setup/</guid><pubDate>Fri, 31 Jul 2020 02:32:30 GMT</pubDate></item><item><title>Blog Repo Setup</title><link>https://engineerslifeforme.github.io/posts/blog-repo-setup/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="intro"&gt;
 &lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;I have likely too many git repository options that I have created over time.

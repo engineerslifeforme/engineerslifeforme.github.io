@@ -12,25 +12,23 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="../../rss.xml">
 <link rel="canonical" href="https://engineerslifeforme.github.io/posts/blog-setup/">
-<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="An Engineer">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+<meta name="author" content="An Engineer">
 <link rel="prev" href="../blog-repo-setup/" title="Blog Repo Setup" type="text/html">
+<link rel="next" href="../self-balancing-cost-assessment/" title="Self-Balancing Cost Assessment" type="text/html">
 <meta property="og:site_name" content="An Engineer's Life for Me!">
 <meta property="og:title" content="Blog Setup">
 <meta property="og:url" content="https://engineerslifeforme.github.io/posts/blog-setup/">
 <meta property="og:description" content="Purpose
 Documenting the process of making this blog and website.
+EngineersLifeForMe
 
 
 Resources
 Resources I found helpful.
 
 Personal Website with Jupyter Support using Nikola and GitHub Page
-Nikola Blog
-
-
-
-Instructions
-">
+Nikola Bl">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-07-31T02:32:30Z">
 </head>
@@ -80,7 +78,7 @@ Instructions
 <a href="../../index.html" class="nav-link">Home</a>
                 </li>
 <li class="nav-item">
-<a href="../../about/index.html" class="nav-link">About</a>
+<a href="../../pages/about/index.html" class="nav-link">About</a>
 
                 
             </li>
@@ -123,6 +121,7 @@ Instructions
 <div class="section" id="purpose">
 <h2>Purpose</h2>
 <p>Documenting the process of making this blog and website.</p>
+<p><a class="reference external" href="https://engineerslifeforme.github.io">EngineersLifeForMe</a></p>
 </div>
 <div class="section" id="resources">
 <h2>Resources</h2>
@@ -130,28 +129,44 @@ Instructions
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://jiaweizhuang.github.io/blog/nikola-guide/">Personal Website with Jupyter Support using Nikola and GitHub Page</a></p></li>
 <li><p><a class="reference external" href="https://getnikola.com/blog/">Nikola Blog</a></p></li>
+<li><p><a class="reference external" href="https://nikola.readthedocs.io/en/latest/manual/#getting-started">Nikola ReadTheDocs</a></p></li>
+<li><p><a class="reference external" href="http://www.jaakkoluttinen.fi/blog/how-to-blog-with-jupyter-ipython-notebook-and-nikola/">How to blog with Jupyter (IPython) Notebook and Nikola</a></p></li>
 </ol>
 </div>
 <div class="section" id="instructions">
 <h2>Instructions</h2>
 <p>I followed the instructions in resource #1 exactly with the following exceptions:</p>
-<ol class="arabic simple">
+<p>1. You may want to consider following my instructions on setting the git config
+for the repo here:</p>
+<ol class="arabic simple" start="2">
 <li><p>I followed the style of <code class="docutils literal">conf.py</code> when adding notebook support:</p></li>
 </ol>
-<pre class="code text"><a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-1"></a>POSTS = (
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-2"></a>    ("posts/*.rst", "posts", "post.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-3"></a>    ("posts/*.md", "posts", "post.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-4"></a>    ("posts/*.txt", "posts", "post.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-5"></a>    ("posts/*.html", "posts", "post.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-6"></a>    ("posts/*.ipynb", "posts", "post.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-7"></a>)
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-8"></a>PAGES = (
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-9"></a>    ("pages/*.rst", "pages", "page.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-10"></a>    ("pages/*.md", "pages", "page.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-11"></a>    ("pages/*.txt", "pages", "page.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-12"></a>    ("pages/*.html", "pages", "page.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-13"></a>    ("pages/*.ipynb", "pages", "page.tmpl"),
-<a name="rest_code_4193c9e92213409ba67ba0b5e2451f55-14"></a>)
+<pre class="code text"><a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-1"></a>POSTS = (
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-2"></a>    ("posts/*.rst", "posts", "post.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-3"></a>    ("posts/*.md", "posts", "post.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-4"></a>    ("posts/*.txt", "posts", "post.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-5"></a>    ("posts/*.html", "posts", "post.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-6"></a>    ("posts/*.ipynb", "posts", "post.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-7"></a>)
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-8"></a>PAGES = (
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-9"></a>    ("pages/*.rst", "pages", "page.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-10"></a>    ("pages/*.md", "pages", "page.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-11"></a>    ("pages/*.txt", "pages", "page.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-12"></a>    ("pages/*.html", "pages", "page.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-13"></a>    ("pages/*.ipynb", "pages", "page.tmpl"),
+<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-14"></a>)
+</pre>
+<p>3. I created an <code class="docutils literal">About</code> page similar to the examples Bio page.  Adding this page to
+the Navigation links did not work.  I had to use:</p>
+<pre class="code text"><a name="rest_code_7ae21850814f49b2bd96c30ff174e248-1"></a>NAVIGATION_LINKS = {
+<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-2"></a>    DEFAULT_LANG: (
+<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-3"></a>        ("/archive.html", "Archives"),
+<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-4"></a>        ("/categories/index.html", "Tags"),
+<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-5"></a>        ("/rss.xml", "RSS feed"),
+<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-6"></a>        ("/index.html", "Home"),
+<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-7"></a>        ("/pages/about/index.html", "About"),
+<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-8"></a>    ),
+<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-9"></a>}
 </pre>
 </div>
 </div>
@@ -159,6 +174,9 @@ Instructions
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
                 <a href="../blog-repo-setup/" rel="prev" title="Blog Repo Setup">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../self-balancing-cost-assessment/" rel="next" title="Self-Balancing Cost Assessment">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
@@ -182,8 +200,36 @@ Instructions
     <a href="https://disqus.com" class="dsq-brlink" rel="nofollow">Comments powered by <span class="logo-disqus">Disqus</span></a>
 
 
-        </section></article><script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer">
-            Contents © 2020         <a href="mailto:creativerigor@gmail.com">An Engineer</a> - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         
+        </section></article><script>var disqus_shortname="nikolademo";(function(){var a=document.createElement("script");a.async=true;a.src="https://"+disqus_shortname+".disqus.com/count.js";(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(a)}());</script><!--End of body content--><footer id="footer"><div class="text-center">
+<p>
+<span class="fa-stack fa-2x">
+  <a href="../../rss.xml">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-rss fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+<span class="fa-stack fa-2x">
+  <a href="https://github.com/engineerslifeforme">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-github fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+<span class="fa-stack fa-2x">
+  <a href="mailto:creativerigor@gmail.com">
+    <i class="fa fa-circle fa-stack-2x"></i>
+    <i class="fa fa-envelope fa-inverse fa-stack-1x"></i>
+  </a>
+</span>
+</p>
+<p>
+  Contents © 2020  <a href="mailto:creativerigor@gmail.com">An Engineer</a>
+  —
+  
+  —
+  Powered by <a href="https://getnikola.com" rel="nofollow">Nikola</a>
+</p>
+</div>
+
             
             
         </footer>
