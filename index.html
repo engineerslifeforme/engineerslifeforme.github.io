@@ -14,7 +14,7 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" hreflang="en" href="rss.xml">
 <link rel="canonical" href="https://engineerslifeforme.github.io/">
 <!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-<link rel="prefetch" href="posts/self-balancing-cost-assessment/" type="text/html">
+<link rel="prefetch" href="posts/edit-git-author-history/" type="text/html">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -77,7 +77,125 @@
     
         
     <div class="postindex">
-            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/self-balancing-cost-assessment/" class="u-url">Self-Balancing Cost Assessment</a></h1>
+            <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/edit-git-author-history/" class="u-url">Edit Git Author History</a></h1>
+                <div class="metadata">
+                    <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                        An Engineer
+                    </span></p>
+            <p class="dateline">
+            <a href="posts/edit-git-author-history/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-08-04T02:58:11Z" itemprop="datePublished" title="2020-08-04 02:58">2020-08-04 02:58</time></a>
+            </p>
+                        <p class="commentline">
+        
+    <a href="posts/edit-git-author-history/#disqus_thread" data-disqus-identifier="cache/posts/edit-git-author-history.html">Comments</a>
+
+
+                </p>
+</div>
+            </header><div class="e-content entry-content">
+                    <div>
+<div class="section" id="purpose">
+<h2>Purpose</h2>
+<p>As I mentioned in a previous post, I am attempting to keep the git
+history of the blog prestine.  Well, I switched to another computer
+and immediately messed it up.</p>
+<p>In the good news category, having
+all my notes on github is really handy.  The rendering of the
+draft rst posts was especially handy.  I didn't even need to clone
+the repo to access some links I had gathered.</p>
+<p>So the purpose of this post is to capture the process of fixing my
+mistake.</p>
+</div>
+<div class="section" id="resources">
+<h2>Resources</h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://docs.github.com/en/github/using-git/changing-author-info">Changing author info (Github docs)</a></p></li>
+</ol>
+</div>
+<div class="section" id="instructions">
+<h2>Instructions</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is probably useless or very painful if you have multiple</p>
+</div>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">&lt;string&gt;</span>, line 25)</p>
+<p>Explicit markup ends without a blank line; unexpected unindent.</p>
+</div>
+<p>collaboraters.  A <code class="docutils literal">git fetch</code> will not fix other repos to match.</p>
+<ol class="arabic simple">
+<li><p>Create a place to clone a fresh copy of the repo</p></li>
+</ol>
+<pre class="code text"><a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-1"></a>mkdir temp_blog
+<a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-2"></a>cd temp_blog
+<a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-3"></a>git clone --bare https://BLOG_URL
+<a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-4"></a>cd BLOG_REPO
+</pre>
+<p>2. Go into your commits and find the offending commit(s).  At the terminal use <code class="docutils literal">git log</code>.
+You should see something like:</p>
+<pre class="code text"><a name="rest_code_11648a8e0766435ebaccd89e6429a174-1"></a>commit fb786d1a0782810299d0a58a8155d106c58e94e8 (HEAD -&gt; src)
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-2"></a>Author: BAD_NAME &lt;OLD_EMAIL&gt;
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-3"></a>Date:   Mon Aug 3 16:31:09 2020 -0400
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-4"></a>
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-5"></a>    More drafting on balance-board
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-6"></a>
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-7"></a>commit 4e8cce32080b3832af2f5815cb9654abb3cbe040
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-8"></a>Author: CORRECT_NAME &lt;CORRECT_EMAIL&gt;
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-9"></a>Date:   Sun Aug 2 22:42:28 2020 -0400
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-10"></a>
+<a name="rest_code_11648a8e0766435ebaccd89e6429a174-11"></a>    writing
+</pre>
+<p>3. Create the script they provide filling in <code class="docutils literal">OLD_EMAIL</code>, <code class="docutils literal">CORRECT_NAME</code>,
+and <code class="docutils literal">CORRECT_EMAIL</code>.  I named mine <code class="docutils literal">fix.sh</code>.</p>
+<pre class="code text"><a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-1"></a>#!/bin/sh
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-2"></a>
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-3"></a>git filter-branch --env-filter '
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-4"></a>
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-5"></a>OLD_EMAIL="your-old-email@example.com"
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-6"></a>CORRECT_NAME="Your Correct Name"
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-7"></a>CORRECT_EMAIL="your-correct-email@example.com"
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-8"></a>
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-9"></a>if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-10"></a>then
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-11"></a>export GIT_COMMITTER_NAME="$CORRECT_NAME"
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-12"></a>export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-13"></a>fi
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-14"></a>if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-15"></a>then
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-16"></a>export GIT_AUTHOR_NAME="$CORRECT_NAME"
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-17"></a>export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-18"></a>fi
+<a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-19"></a>' --tag-name-filter cat -- --branches --tags
+</pre>
+<ol class="arabic simple" start="4">
+<li><p>Run the script</p></li>
+</ol>
+<pre class="code text"><a name="rest_code_f1f1ed65783d4dc9a1af50a778f3f530-1"></a>bash fix.sh
+</pre>
+<p>I got an output like this:</p>
+<pre class="code text"><a name="rest_code_305a13d603c5429498cfd8d169ac0beb-1"></a>Rewrite 6c9f6249c2c194676fe3aa3fdb5a0a83eab3d635 (1/7) (0 seconds passed, remainRewrite a18de98856d9c03740df59ddde8059f0fcb42509 (2/7) (0 seconds passed, remainRewrite 37b52d143b39f05c62851e044259ab8d1fe97725 (3/7) (0 seconds passed, remainRewrite c4f57f07893ba7c22b594f08d76794ab0b22b1a5 (4/7) (0 seconds passed, remainRewrite 63754887571d3eb125b460e3c4144f31b86c9bb9 (5/7) (0 seconds passed, remainRewrite 4e8cce32080b3832af2f5815cb9654abb3cbe040 (6/7) (0 seconds passed, remainRewrite fb786d1a0782810299d0a58a8155d106c58e94e8 (7/7) (0 seconds passed, remaining 0 predicted)
+<a name="rest_code_305a13d603c5429498cfd8d169ac0beb-2"></a>WARNING: Ref 'refs/heads/master' is unchanged
+<a name="rest_code_305a13d603c5429498cfd8d169ac0beb-3"></a>Ref 'refs/heads/src' was rewritten
+</pre>
+<p>5. Double check that the commit data you wanted changed is changed:
+<code class="docutils literal">git log</code>.  Mine was all good.</p>
+<ol class="arabic simple" start="6">
+<li><p>Push the new history to the server:</p></li>
+</ol>
+<pre class="code text"><a name="rest_code_7098ae87008d48ccba6c3e8cf5b6c177-1"></a>git push --force --tags origin 'refs/heads/*'
+</pre>
+<ol class="arabic simple" start="7">
+<li><p>You should see the changes in the web view of the repo as well now.</p></li>
+<li><p>You should delete <code class="docutils literal">temp_blog</code> now.</p></li>
+<li><p>You should delete and reclone all versions of the repository.</p></li>
+</ol>
+<p>9. Follow the instructions in my previous post to avoid this problem in the future:
+<a class="reference external" href="posts/blog-repo-setup/">Blog Repo Setup</a></p>
+</div>
+</div>
+                </div>
+            </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="posts/self-balancing-cost-assessment/" class="u-url">Self-Balancing Cost Assessment</a></h1>
                 <div class="metadata">
                     <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                         An Engineer
@@ -202,32 +320,32 @@ for the repo here:</p>
 <ol class="arabic simple" start="2">
 <li><p>I followed the style of <code class="docutils literal">conf.py</code> when adding notebook support:</p></li>
 </ol>
-<pre class="code text"><a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-1"></a>POSTS = (
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-2"></a>    ("posts/*.rst", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-3"></a>    ("posts/*.md", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-4"></a>    ("posts/*.txt", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-5"></a>    ("posts/*.html", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-6"></a>    ("posts/*.ipynb", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-7"></a>)
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-8"></a>PAGES = (
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-9"></a>    ("pages/*.rst", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-10"></a>    ("pages/*.md", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-11"></a>    ("pages/*.txt", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-12"></a>    ("pages/*.html", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-13"></a>    ("pages/*.ipynb", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-14"></a>)
+<pre class="code text"><a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-1"></a>POSTS = (
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-2"></a>    ("posts/*.rst", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-3"></a>    ("posts/*.md", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-4"></a>    ("posts/*.txt", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-5"></a>    ("posts/*.html", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-6"></a>    ("posts/*.ipynb", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-7"></a>)
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-8"></a>PAGES = (
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-9"></a>    ("pages/*.rst", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-10"></a>    ("pages/*.md", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-11"></a>    ("pages/*.txt", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-12"></a>    ("pages/*.html", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-13"></a>    ("pages/*.ipynb", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-14"></a>)
 </pre>
 <p>3. I created an <code class="docutils literal">About</code> page similar to the examples Bio page.  Adding this page to
 the Navigation links did not work.  I had to use:</p>
-<pre class="code text"><a name="rest_code_7ae21850814f49b2bd96c30ff174e248-1"></a>NAVIGATION_LINKS = {
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-2"></a>    DEFAULT_LANG: (
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-3"></a>        ("/archive.html", "Archives"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-4"></a>        ("/categories/index.html", "Tags"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-5"></a>        ("/rss.xml", "RSS feed"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-6"></a>        ("/index.html", "Home"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-7"></a>        ("/pages/about/index.html", "About"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-8"></a>    ),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-9"></a>}
+<pre class="code text"><a name="rest_code_44aaaeae84744a74aaef682aed39e708-1"></a>NAVIGATION_LINKS = {
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-2"></a>    DEFAULT_LANG: (
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-3"></a>        ("/archive.html", "Archives"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-4"></a>        ("/categories/index.html", "Tags"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-5"></a>        ("/rss.xml", "RSS feed"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-6"></a>        ("/index.html", "Home"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-7"></a>        ("/pages/about/index.html", "About"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-8"></a>    ),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-9"></a>}
 </pre>
 </div>
 </div>
@@ -275,14 +393,14 @@ show the email and user I have setup for this blog/repo.</p>
 <ol class="arabic simple">
 <li><p>Initialize the repo.  My repo is in a folder called <code class="docutils literal">blog</code></p></li>
 </ol>
-<pre class="code text"><a name="rest_code_959e9d09982443e0b3e65c63c519ae19-1"></a>cd blog
-<a name="rest_code_959e9d09982443e0b3e65c63c519ae19-2"></a>git init
+<pre class="code text"><a name="rest_code_e0613bcab7ad41558176b342228185bd-1"></a>cd blog
+<a name="rest_code_e0613bcab7ad41558176b342228185bd-2"></a>git init
 </pre>
 <ol class="arabic simple" start="2">
 <li><p>Run the following git configuration commands (filling in your own details)</p></li>
 </ol>
-<pre class="code text"><a name="rest_code_09e2c80436784df5974a5d27fec399b7-1"></a>git config user.name "Creative Rigor, LLC"
-<a name="rest_code_09e2c80436784df5974a5d27fec399b7-2"></a>git config user.email creativerigor [at] gmail.com
+<pre class="code text"><a name="rest_code_7b8b143d33ed44c38e6b60ccb625e5e8-1"></a>git config user.name "Creative Rigor, LLC"
+<a name="rest_code_7b8b143d33ed44c38e6b60ccb625e5e8-2"></a>git config user.email creativerigor [at] gmail.com
 </pre>
 <p>Format your email address properly.</p>
 <p>Definitely do not use the <code class="docutils literal"><span class="pre">--global</span></code> flag which will change the default

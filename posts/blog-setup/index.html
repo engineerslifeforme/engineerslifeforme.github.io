@@ -141,32 +141,32 @@ for the repo here:</p>
 <ol class="arabic simple" start="2">
 <li><p>I followed the style of <code class="docutils literal">conf.py</code> when adding notebook support:</p></li>
 </ol>
-<pre class="code text"><a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-1"></a>POSTS = (
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-2"></a>    ("posts/*.rst", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-3"></a>    ("posts/*.md", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-4"></a>    ("posts/*.txt", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-5"></a>    ("posts/*.html", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-6"></a>    ("posts/*.ipynb", "posts", "post.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-7"></a>)
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-8"></a>PAGES = (
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-9"></a>    ("pages/*.rst", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-10"></a>    ("pages/*.md", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-11"></a>    ("pages/*.txt", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-12"></a>    ("pages/*.html", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-13"></a>    ("pages/*.ipynb", "pages", "page.tmpl"),
-<a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-14"></a>)
+<pre class="code text"><a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-1"></a>POSTS = (
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-2"></a>    ("posts/*.rst", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-3"></a>    ("posts/*.md", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-4"></a>    ("posts/*.txt", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-5"></a>    ("posts/*.html", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-6"></a>    ("posts/*.ipynb", "posts", "post.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-7"></a>)
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-8"></a>PAGES = (
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-9"></a>    ("pages/*.rst", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-10"></a>    ("pages/*.md", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-11"></a>    ("pages/*.txt", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-12"></a>    ("pages/*.html", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-13"></a>    ("pages/*.ipynb", "pages", "page.tmpl"),
+<a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-14"></a>)
 </pre>
 <p>3. I created an <code class="docutils literal">About</code> page similar to the examples Bio page.  Adding this page to
 the Navigation links did not work.  I had to use:</p>
-<pre class="code text"><a name="rest_code_7ae21850814f49b2bd96c30ff174e248-1"></a>NAVIGATION_LINKS = {
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-2"></a>    DEFAULT_LANG: (
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-3"></a>        ("/archive.html", "Archives"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-4"></a>        ("/categories/index.html", "Tags"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-5"></a>        ("/rss.xml", "RSS feed"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-6"></a>        ("/index.html", "Home"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-7"></a>        ("/pages/about/index.html", "About"),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-8"></a>    ),
-<a name="rest_code_7ae21850814f49b2bd96c30ff174e248-9"></a>}
+<pre class="code text"><a name="rest_code_44aaaeae84744a74aaef682aed39e708-1"></a>NAVIGATION_LINKS = {
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-2"></a>    DEFAULT_LANG: (
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-3"></a>        ("/archive.html", "Archives"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-4"></a>        ("/categories/index.html", "Tags"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-5"></a>        ("/rss.xml", "RSS feed"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-6"></a>        ("/index.html", "Home"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-7"></a>        ("/pages/about/index.html", "About"),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-8"></a>    ),
+<a name="rest_code_44aaaeae84744a74aaef682aed39e708-9"></a>}
 </pre>
 </div>
 </div>

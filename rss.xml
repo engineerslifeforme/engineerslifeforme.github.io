@@ -1,5 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Sun, 02 Aug 2020 02:41:23 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Self-Balancing Cost Assessment</title><link>https://engineerslifeforme.github.io/posts/self-balancing-cost-assessment/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Tue, 04 Aug 2020 03:02:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Edit Git Author History</title><link>https://engineerslifeforme.github.io/posts/edit-git-author-history/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
+&lt;h2&gt;Purpose&lt;/h2&gt;
+&lt;p&gt;As I mentioned in a previous post, I am attempting to keep the git
+history of the blog prestine.  Well, I switched to another computer
+and immediately messed it up.&lt;/p&gt;
+&lt;p&gt;In the good news category, having
+all my notes on github is really handy.  The rendering of the
+draft rst posts was especially handy.  I didn't even need to clone
+the repo to access some links I had gathered.&lt;/p&gt;
+&lt;p&gt;So the purpose of this post is to capture the process of fixing my
+mistake.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="resources"&gt;
+&lt;h2&gt;Resources&lt;/h2&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://docs.github.com/en/github/using-git/changing-author-info"&gt;Changing author info (Github docs)&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="instructions"&gt;
+&lt;h2&gt;Instructions&lt;/h2&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;This is probably useless or very painful if you have multiple&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="system-message"&gt;
+&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;span class="docutils literal"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;, line 25)&lt;/p&gt;
+&lt;p&gt;Explicit markup ends without a blank line; unexpected unindent.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;collaboraters.  A &lt;code class="docutils literal"&gt;git fetch&lt;/code&gt; will not fix other repos to match.&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;Create a place to clone a fresh copy of the repo&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-1"&gt;&lt;/a&gt;mkdir temp_blog
+&lt;a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-2"&gt;&lt;/a&gt;cd temp_blog
+&lt;a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-3"&gt;&lt;/a&gt;git clone --bare https://BLOG_URL
+&lt;a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-4"&gt;&lt;/a&gt;cd BLOG_REPO
+&lt;/pre&gt;&lt;p&gt;2. Go into your commits and find the offending commit(s).  At the terminal use &lt;code class="docutils literal"&gt;git log&lt;/code&gt;.
+You should see something like:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-1"&gt;&lt;/a&gt;commit fb786d1a0782810299d0a58a8155d106c58e94e8 (HEAD -&amp;gt; src)
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-2"&gt;&lt;/a&gt;Author: BAD_NAME &amp;lt;OLD_EMAIL&amp;gt;
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-3"&gt;&lt;/a&gt;Date:   Mon Aug 3 16:31:09 2020 -0400
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-5"&gt;&lt;/a&gt;    More drafting on balance-board
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-7"&gt;&lt;/a&gt;commit 4e8cce32080b3832af2f5815cb9654abb3cbe040
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-8"&gt;&lt;/a&gt;Author: CORRECT_NAME &amp;lt;CORRECT_EMAIL&amp;gt;
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-9"&gt;&lt;/a&gt;Date:   Sun Aug 2 22:42:28 2020 -0400
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-11"&gt;&lt;/a&gt;    writing
+&lt;/pre&gt;&lt;p&gt;3. Create the script they provide filling in &lt;code class="docutils literal"&gt;OLD_EMAIL&lt;/code&gt;, &lt;code class="docutils literal"&gt;CORRECT_NAME&lt;/code&gt;,
+and &lt;code class="docutils literal"&gt;CORRECT_EMAIL&lt;/code&gt;.  I named mine &lt;code class="docutils literal"&gt;fix.sh&lt;/code&gt;.&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-1"&gt;&lt;/a&gt;#!/bin/sh
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-3"&gt;&lt;/a&gt;git filter-branch --env-filter '
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-5"&gt;&lt;/a&gt;OLD_EMAIL="your-old-email@example.com"
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-6"&gt;&lt;/a&gt;CORRECT_NAME="Your Correct Name"
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-7"&gt;&lt;/a&gt;CORRECT_EMAIL="your-correct-email@example.com"
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-9"&gt;&lt;/a&gt;if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-10"&gt;&lt;/a&gt;then
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-11"&gt;&lt;/a&gt;export GIT_COMMITTER_NAME="$CORRECT_NAME"
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-12"&gt;&lt;/a&gt;export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-13"&gt;&lt;/a&gt;fi
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-14"&gt;&lt;/a&gt;if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-15"&gt;&lt;/a&gt;then
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-16"&gt;&lt;/a&gt;export GIT_AUTHOR_NAME="$CORRECT_NAME"
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-17"&gt;&lt;/a&gt;export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-18"&gt;&lt;/a&gt;fi
+&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-19"&gt;&lt;/a&gt;' --tag-name-filter cat -- --branches --tags
+&lt;/pre&gt;&lt;ol class="arabic simple" start="4"&gt;
+&lt;li&gt;&lt;p&gt;Run the script&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_f1f1ed65783d4dc9a1af50a778f3f530-1"&gt;&lt;/a&gt;bash fix.sh
+&lt;/pre&gt;&lt;p&gt;I got an output like this:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_305a13d603c5429498cfd8d169ac0beb-1"&gt;&lt;/a&gt;Rewrite 6c9f6249c2c194676fe3aa3fdb5a0a83eab3d635 (1/7) (0 seconds passed, remainRewrite a18de98856d9c03740df59ddde8059f0fcb42509 (2/7) (0 seconds passed, remainRewrite 37b52d143b39f05c62851e044259ab8d1fe97725 (3/7) (0 seconds passed, remainRewrite c4f57f07893ba7c22b594f08d76794ab0b22b1a5 (4/7) (0 seconds passed, remainRewrite 63754887571d3eb125b460e3c4144f31b86c9bb9 (5/7) (0 seconds passed, remainRewrite 4e8cce32080b3832af2f5815cb9654abb3cbe040 (6/7) (0 seconds passed, remainRewrite fb786d1a0782810299d0a58a8155d106c58e94e8 (7/7) (0 seconds passed, remaining 0 predicted)
+&lt;a name="rest_code_305a13d603c5429498cfd8d169ac0beb-2"&gt;&lt;/a&gt;WARNING: Ref 'refs/heads/master' is unchanged
+&lt;a name="rest_code_305a13d603c5429498cfd8d169ac0beb-3"&gt;&lt;/a&gt;Ref 'refs/heads/src' was rewritten
+&lt;/pre&gt;&lt;p&gt;5. Double check that the commit data you wanted changed is changed:
+&lt;code class="docutils literal"&gt;git log&lt;/code&gt;.  Mine was all good.&lt;/p&gt;
+&lt;ol class="arabic simple" start="6"&gt;
+&lt;li&gt;&lt;p&gt;Push the new history to the server:&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_7098ae87008d48ccba6c3e8cf5b6c177-1"&gt;&lt;/a&gt;git push --force --tags origin 'refs/heads/*'
+&lt;/pre&gt;&lt;ol class="arabic simple" start="7"&gt;
+&lt;li&gt;&lt;p&gt;You should see the changes in the web view of the repo as well now.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You should delete &lt;code class="docutils literal"&gt;temp_blog&lt;/code&gt; now.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;You should delete and reclone all versions of the repository.&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;9. Follow the instructions in my previous post to avoid this problem in the future:
+&lt;a class="reference external" href="https://engineerslifeforme.github.io/posts/blog-repo-setup/"&gt;Blog Repo Setup&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/edit-git-author-history/</guid><pubDate>Tue, 04 Aug 2020 02:58:11 GMT</pubDate></item><item><title>Self-Balancing Cost Assessment</title><link>https://engineerslifeforme.github.io/posts/self-balancing-cost-assessment/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
 &lt;h2&gt;Purpose&lt;/h2&gt;
 &lt;p&gt;As is often the case for many of my DIY projects, one the first steps I
 take is a cost assessment and/or product search.  Is there already something
@@ -81,31 +172,31 @@ for the repo here:&lt;/p&gt;
 &lt;ol class="arabic simple" start="2"&gt;
 &lt;li&gt;&lt;p&gt;I followed the style of &lt;code class="docutils literal"&gt;conf.py&lt;/code&gt; when adding notebook support:&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-1"&gt;&lt;/a&gt;POSTS = (
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-2"&gt;&lt;/a&gt;    ("posts/*.rst", "posts", "post.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-3"&gt;&lt;/a&gt;    ("posts/*.md", "posts", "post.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-4"&gt;&lt;/a&gt;    ("posts/*.txt", "posts", "post.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-5"&gt;&lt;/a&gt;    ("posts/*.html", "posts", "post.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-6"&gt;&lt;/a&gt;    ("posts/*.ipynb", "posts", "post.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-7"&gt;&lt;/a&gt;)
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-8"&gt;&lt;/a&gt;PAGES = (
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-9"&gt;&lt;/a&gt;    ("pages/*.rst", "pages", "page.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-10"&gt;&lt;/a&gt;    ("pages/*.md", "pages", "page.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-11"&gt;&lt;/a&gt;    ("pages/*.txt", "pages", "page.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-12"&gt;&lt;/a&gt;    ("pages/*.html", "pages", "page.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-13"&gt;&lt;/a&gt;    ("pages/*.ipynb", "pages", "page.tmpl"),
-&lt;a name="rest_code_84e977e6f79746df8cfc0b60780a1e2e-14"&gt;&lt;/a&gt;)
+&lt;pre class="code text"&gt;&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-1"&gt;&lt;/a&gt;POSTS = (
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-2"&gt;&lt;/a&gt;    ("posts/*.rst", "posts", "post.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-3"&gt;&lt;/a&gt;    ("posts/*.md", "posts", "post.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-4"&gt;&lt;/a&gt;    ("posts/*.txt", "posts", "post.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-5"&gt;&lt;/a&gt;    ("posts/*.html", "posts", "post.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-6"&gt;&lt;/a&gt;    ("posts/*.ipynb", "posts", "post.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-7"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-8"&gt;&lt;/a&gt;PAGES = (
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-9"&gt;&lt;/a&gt;    ("pages/*.rst", "pages", "page.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-10"&gt;&lt;/a&gt;    ("pages/*.md", "pages", "page.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-11"&gt;&lt;/a&gt;    ("pages/*.txt", "pages", "page.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-12"&gt;&lt;/a&gt;    ("pages/*.html", "pages", "page.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-13"&gt;&lt;/a&gt;    ("pages/*.ipynb", "pages", "page.tmpl"),
+&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-14"&gt;&lt;/a&gt;)
 &lt;/pre&gt;&lt;p&gt;3. I created an &lt;code class="docutils literal"&gt;About&lt;/code&gt; page similar to the examples Bio page.  Adding this page to
 the Navigation links did not work.  I had to use:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-1"&gt;&lt;/a&gt;NAVIGATION_LINKS = {
-&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-2"&gt;&lt;/a&gt;    DEFAULT_LANG: (
-&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-3"&gt;&lt;/a&gt;        ("/archive.html", "Archives"),
-&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-4"&gt;&lt;/a&gt;        ("/categories/index.html", "Tags"),
-&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-5"&gt;&lt;/a&gt;        ("/rss.xml", "RSS feed"),
-&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-6"&gt;&lt;/a&gt;        ("/index.html", "Home"),
-&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-7"&gt;&lt;/a&gt;        ("/pages/about/index.html", "About"),
-&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-8"&gt;&lt;/a&gt;    ),
-&lt;a name="rest_code_7ae21850814f49b2bd96c30ff174e248-9"&gt;&lt;/a&gt;}
+&lt;pre class="code text"&gt;&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-1"&gt;&lt;/a&gt;NAVIGATION_LINKS = {
+&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-2"&gt;&lt;/a&gt;    DEFAULT_LANG: (
+&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-3"&gt;&lt;/a&gt;        ("/archive.html", "Archives"),
+&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-4"&gt;&lt;/a&gt;        ("/categories/index.html", "Tags"),
+&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-5"&gt;&lt;/a&gt;        ("/rss.xml", "RSS feed"),
+&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-6"&gt;&lt;/a&gt;        ("/index.html", "Home"),
+&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-7"&gt;&lt;/a&gt;        ("/pages/about/index.html", "About"),
+&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-8"&gt;&lt;/a&gt;    ),
+&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-9"&gt;&lt;/a&gt;}
 &lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/blog-setup/</guid><pubDate>Fri, 31 Jul 2020 02:32:30 GMT</pubDate></item><item><title>Blog Repo Setup</title><link>https://engineerslifeforme.github.io/posts/blog-repo-setup/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="intro"&gt;
 &lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;I have likely too many git repository options that I have created over time.
@@ -131,13 +222,13 @@ show the email and user I have setup for this blog/repo.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;&lt;p&gt;Initialize the repo.  My repo is in a folder called &lt;code class="docutils literal"&gt;blog&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_959e9d09982443e0b3e65c63c519ae19-1"&gt;&lt;/a&gt;cd blog
-&lt;a name="rest_code_959e9d09982443e0b3e65c63c519ae19-2"&gt;&lt;/a&gt;git init
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e0613bcab7ad41558176b342228185bd-1"&gt;&lt;/a&gt;cd blog
+&lt;a name="rest_code_e0613bcab7ad41558176b342228185bd-2"&gt;&lt;/a&gt;git init
 &lt;/pre&gt;&lt;ol class="arabic simple" start="2"&gt;
 &lt;li&gt;&lt;p&gt;Run the following git configuration commands (filling in your own details)&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_09e2c80436784df5974a5d27fec399b7-1"&gt;&lt;/a&gt;git config user.name "Creative Rigor, LLC"
-&lt;a name="rest_code_09e2c80436784df5974a5d27fec399b7-2"&gt;&lt;/a&gt;git config user.email creativerigor [at] gmail.com
+&lt;pre class="code text"&gt;&lt;a name="rest_code_7b8b143d33ed44c38e6b60ccb625e5e8-1"&gt;&lt;/a&gt;git config user.name "Creative Rigor, LLC"
+&lt;a name="rest_code_7b8b143d33ed44c38e6b60ccb625e5e8-2"&gt;&lt;/a&gt;git config user.email creativerigor [at] gmail.com
 &lt;/pre&gt;&lt;p&gt;Format your email address properly.&lt;/p&gt;
 &lt;p&gt;Definitely do not use the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--global&lt;/span&gt;&lt;/code&gt; flag which will change the default
 user settings for all repos.&lt;/p&gt;
