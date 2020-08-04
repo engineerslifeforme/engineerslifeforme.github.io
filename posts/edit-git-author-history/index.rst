@@ -30,8 +30,10 @@ Resources
 Instructions
 =============
 
-.. note:: This is probably useless or very painful if you have multiple
-collaboraters.  A ``git fetch`` will not fix other repos to match.
+.. warning:: 
+
+    This is probably useless or very painful if you have multiple
+    collaboraters.  A ``git fetch`` will not fix other repos to match.
 
 1. Create a place to clone a fresh copy of the repo
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Tue, 04 Aug 2020 03:02:25 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Edit Git Author History</title><link>https://engineerslifeforme.github.io/posts/edit-git-author-history/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Tue, 04 Aug 2020 03:10:46 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Edit Git Author History</title><link>https://engineerslifeforme.github.io/posts/edit-git-author-history/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
 &lt;h2&gt;Purpose&lt;/h2&gt;
 &lt;p&gt;As I mentioned in a previous post, I am attempting to keep the git
 history of the blog prestine.  Well, I switched to another computer
@@ -19,70 +19,66 @@ mistake.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="instructions"&gt;
 &lt;h2&gt;Instructions&lt;/h2&gt;
-&lt;div class="admonition note"&gt;
-&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
-&lt;p&gt;This is probably useless or very painful if you have multiple&lt;/p&gt;
+&lt;div class="admonition warning"&gt;
+&lt;p class="admonition-title"&gt;Warning&lt;/p&gt;
+&lt;p&gt;This is probably useless or very painful if you have multiple
+collaboraters.  A &lt;code class="docutils literal"&gt;git fetch&lt;/code&gt; will not fix other repos to match.&lt;/p&gt;
 &lt;/div&gt;
-&lt;div class="system-message"&gt;
-&lt;p class="system-message-title"&gt;System Message: WARNING/2 (&lt;span class="docutils literal"&gt;&amp;lt;string&amp;gt;&lt;/span&gt;, line 25)&lt;/p&gt;
-&lt;p&gt;Explicit markup ends without a blank line; unexpected unindent.&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;collaboraters.  A &lt;code class="docutils literal"&gt;git fetch&lt;/code&gt; will not fix other repos to match.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;&lt;p&gt;Create a place to clone a fresh copy of the repo&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-1"&gt;&lt;/a&gt;mkdir temp_blog
-&lt;a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-2"&gt;&lt;/a&gt;cd temp_blog
-&lt;a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-3"&gt;&lt;/a&gt;git clone --bare https://BLOG_URL
-&lt;a name="rest_code_2bc0df7ced5b443dab3344adb2dcec7c-4"&gt;&lt;/a&gt;cd BLOG_REPO
+&lt;pre class="code text"&gt;&lt;a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-1"&gt;&lt;/a&gt;mkdir temp_blog
+&lt;a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-2"&gt;&lt;/a&gt;cd temp_blog
+&lt;a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-3"&gt;&lt;/a&gt;git clone --bare https://BLOG_URL
+&lt;a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-4"&gt;&lt;/a&gt;cd BLOG_REPO
 &lt;/pre&gt;&lt;p&gt;2. Go into your commits and find the offending commit(s).  At the terminal use &lt;code class="docutils literal"&gt;git log&lt;/code&gt;.
 You should see something like:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-1"&gt;&lt;/a&gt;commit fb786d1a0782810299d0a58a8155d106c58e94e8 (HEAD -&amp;gt; src)
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-2"&gt;&lt;/a&gt;Author: BAD_NAME &amp;lt;OLD_EMAIL&amp;gt;
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-3"&gt;&lt;/a&gt;Date:   Mon Aug 3 16:31:09 2020 -0400
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-5"&gt;&lt;/a&gt;    More drafting on balance-board
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-7"&gt;&lt;/a&gt;commit 4e8cce32080b3832af2f5815cb9654abb3cbe040
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-8"&gt;&lt;/a&gt;Author: CORRECT_NAME &amp;lt;CORRECT_EMAIL&amp;gt;
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-9"&gt;&lt;/a&gt;Date:   Sun Aug 2 22:42:28 2020 -0400
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-10"&gt;&lt;/a&gt;
-&lt;a name="rest_code_11648a8e0766435ebaccd89e6429a174-11"&gt;&lt;/a&gt;    writing
+&lt;pre class="code text"&gt;&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-1"&gt;&lt;/a&gt;commit fb786d1a0782810299d0a58a8155d106c58e94e8 (HEAD -&amp;gt; src)
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-2"&gt;&lt;/a&gt;Author: BAD_NAME &amp;lt;OLD_EMAIL&amp;gt;
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-3"&gt;&lt;/a&gt;Date:   Mon Aug 3 16:31:09 2020 -0400
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-5"&gt;&lt;/a&gt;    More drafting on balance-board
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-7"&gt;&lt;/a&gt;commit 4e8cce32080b3832af2f5815cb9654abb3cbe040
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-8"&gt;&lt;/a&gt;Author: CORRECT_NAME &amp;lt;CORRECT_EMAIL&amp;gt;
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-9"&gt;&lt;/a&gt;Date:   Sun Aug 2 22:42:28 2020 -0400
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-11"&gt;&lt;/a&gt;    writing
 &lt;/pre&gt;&lt;p&gt;3. Create the script they provide filling in &lt;code class="docutils literal"&gt;OLD_EMAIL&lt;/code&gt;, &lt;code class="docutils literal"&gt;CORRECT_NAME&lt;/code&gt;,
 and &lt;code class="docutils literal"&gt;CORRECT_EMAIL&lt;/code&gt;.  I named mine &lt;code class="docutils literal"&gt;fix.sh&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-1"&gt;&lt;/a&gt;#!/bin/sh
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-3"&gt;&lt;/a&gt;git filter-branch --env-filter '
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-5"&gt;&lt;/a&gt;OLD_EMAIL="your-old-email@example.com"
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-6"&gt;&lt;/a&gt;CORRECT_NAME="Your Correct Name"
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-7"&gt;&lt;/a&gt;CORRECT_EMAIL="your-correct-email@example.com"
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-9"&gt;&lt;/a&gt;if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-10"&gt;&lt;/a&gt;then
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-11"&gt;&lt;/a&gt;export GIT_COMMITTER_NAME="$CORRECT_NAME"
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-12"&gt;&lt;/a&gt;export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-13"&gt;&lt;/a&gt;fi
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-14"&gt;&lt;/a&gt;if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-15"&gt;&lt;/a&gt;then
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-16"&gt;&lt;/a&gt;export GIT_AUTHOR_NAME="$CORRECT_NAME"
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-17"&gt;&lt;/a&gt;export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-18"&gt;&lt;/a&gt;fi
-&lt;a name="rest_code_85296bfc4eb14af8bce4969ad6392c08-19"&gt;&lt;/a&gt;' --tag-name-filter cat -- --branches --tags
+&lt;pre class="code text"&gt;&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-1"&gt;&lt;/a&gt;#!/bin/sh
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-3"&gt;&lt;/a&gt;git filter-branch --env-filter '
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-5"&gt;&lt;/a&gt;OLD_EMAIL="your-old-email@example.com"
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-6"&gt;&lt;/a&gt;CORRECT_NAME="Your Correct Name"
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-7"&gt;&lt;/a&gt;CORRECT_EMAIL="your-correct-email@example.com"
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-9"&gt;&lt;/a&gt;if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-10"&gt;&lt;/a&gt;then
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-11"&gt;&lt;/a&gt;export GIT_COMMITTER_NAME="$CORRECT_NAME"
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-12"&gt;&lt;/a&gt;export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-13"&gt;&lt;/a&gt;fi
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-14"&gt;&lt;/a&gt;if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-15"&gt;&lt;/a&gt;then
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-16"&gt;&lt;/a&gt;export GIT_AUTHOR_NAME="$CORRECT_NAME"
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-17"&gt;&lt;/a&gt;export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-18"&gt;&lt;/a&gt;fi
+&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-19"&gt;&lt;/a&gt;' --tag-name-filter cat -- --branches --tags
 &lt;/pre&gt;&lt;ol class="arabic simple" start="4"&gt;
 &lt;li&gt;&lt;p&gt;Run the script&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_f1f1ed65783d4dc9a1af50a778f3f530-1"&gt;&lt;/a&gt;bash fix.sh
+&lt;pre class="code text"&gt;&lt;a name="rest_code_b3faa39df3d04edb92d5c765bec47e56-1"&gt;&lt;/a&gt;bash fix.sh
 &lt;/pre&gt;&lt;p&gt;I got an output like this:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_305a13d603c5429498cfd8d169ac0beb-1"&gt;&lt;/a&gt;Rewrite 6c9f6249c2c194676fe3aa3fdb5a0a83eab3d635 (1/7) (0 seconds passed, remainRewrite a18de98856d9c03740df59ddde8059f0fcb42509 (2/7) (0 seconds passed, remainRewrite 37b52d143b39f05c62851e044259ab8d1fe97725 (3/7) (0 seconds passed, remainRewrite c4f57f07893ba7c22b594f08d76794ab0b22b1a5 (4/7) (0 seconds passed, remainRewrite 63754887571d3eb125b460e3c4144f31b86c9bb9 (5/7) (0 seconds passed, remainRewrite 4e8cce32080b3832af2f5815cb9654abb3cbe040 (6/7) (0 seconds passed, remainRewrite fb786d1a0782810299d0a58a8155d106c58e94e8 (7/7) (0 seconds passed, remaining 0 predicted)
-&lt;a name="rest_code_305a13d603c5429498cfd8d169ac0beb-2"&gt;&lt;/a&gt;WARNING: Ref 'refs/heads/master' is unchanged
-&lt;a name="rest_code_305a13d603c5429498cfd8d169ac0beb-3"&gt;&lt;/a&gt;Ref 'refs/heads/src' was rewritten
+&lt;pre class="code text"&gt;&lt;a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-1"&gt;&lt;/a&gt;Rewrite 6c9f6249c2c194676fe3aa3fdb5a0a83eab3d635 (1/7) (0 seconds passed, remainRewrite a18de98856d9c03740df59ddde8059f0fcb42509 (2/7) (0 seconds passed, remainRewrite 37b52d143b39f05c62851e044259ab8d1fe97725 (3/7) (0 seconds passed, remainRewrite c4f57f07893ba7c22b594f08d76794ab0b22b1a5 (4/7) (0 seconds passed, remainRewrite 63754887571d3eb125b460e3c4144f31b86c9bb9 (5/7) (0 seconds passed, remainRewrite 4e8cce32080b3832af2f5815cb9654abb3cbe040 (6/7) (0 seconds passed, remainRewrite fb786d1a0782810299d0a58a8155d106c58e94e8 (7/7) (0 seconds passed, remaining 0 predicted)
+&lt;a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-2"&gt;&lt;/a&gt;WARNING: Ref 'refs/heads/master' is unchanged
+&lt;a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-3"&gt;&lt;/a&gt;Ref 'refs/heads/src' was rewritten
 &lt;/pre&gt;&lt;p&gt;5. Double check that the commit data you wanted changed is changed:
 &lt;code class="docutils literal"&gt;git log&lt;/code&gt;.  Mine was all good.&lt;/p&gt;
 &lt;ol class="arabic simple" start="6"&gt;
 &lt;li&gt;&lt;p&gt;Push the new history to the server:&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_7098ae87008d48ccba6c3e8cf5b6c177-1"&gt;&lt;/a&gt;git push --force --tags origin 'refs/heads/*'
+&lt;pre class="code text"&gt;&lt;a name="rest_code_a71aed9b29774e9abebdad83282d1103-1"&gt;&lt;/a&gt;git push --force --tags origin 'refs/heads/*'
 &lt;/pre&gt;&lt;ol class="arabic simple" start="7"&gt;
 &lt;li&gt;&lt;p&gt;You should see the changes in the web view of the repo as well now.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;You should delete &lt;code class="docutils literal"&gt;temp_blog&lt;/code&gt; now.&lt;/p&gt;&lt;/li&gt;
