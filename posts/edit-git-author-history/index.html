@@ -15,6 +15,7 @@
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 <meta name="author" content="An Engineer">
 <link rel="prev" href="../self-balancing-cost-assessment/" title="Self-Balancing Cost Assessment" type="text/html">
+<link rel="next" href="../redis-version-issues/" title="Redis Version Issues" type="text/html">
 <meta property="og:site_name" content="An Engineer's Life for Me!">
 <meta property="og:title" content="Edit Git Author History">
 <meta property="og:url" content="https://engineerslifeforme.github.io/posts/edit-git-author-history/">
@@ -140,63 +141,63 @@ collaboraters.  A <code class="docutils literal">git fetch</code> will not fix o
 <ol class="arabic simple">
 <li><p>Create a place to clone a fresh copy of the repo</p></li>
 </ol>
-<pre class="code text"><a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-1"></a>mkdir temp_blog
-<a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-2"></a>cd temp_blog
-<a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-3"></a>git clone --bare https://BLOG_URL
-<a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-4"></a>cd BLOG_REPO
+<pre class="code text"><a name="rest_code_5f10f174cf664eecbb1bee83b02d1105-1"></a>mkdir temp_blog
+<a name="rest_code_5f10f174cf664eecbb1bee83b02d1105-2"></a>cd temp_blog
+<a name="rest_code_5f10f174cf664eecbb1bee83b02d1105-3"></a>git clone --bare https://BLOG_URL
+<a name="rest_code_5f10f174cf664eecbb1bee83b02d1105-4"></a>cd BLOG_REPO
 </pre>
 <p>2. Go into your commits and find the offending commit(s).  At the terminal use <code class="docutils literal">git log</code>.
 You should see something like:</p>
-<pre class="code text"><a name="rest_code_b0843d4233f3455c9f47dc1013918846-1"></a>commit fb786d1a0782810299d0a58a8155d106c58e94e8 (HEAD -&gt; src)
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-2"></a>Author: BAD_NAME &lt;OLD_EMAIL&gt;
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-3"></a>Date:   Mon Aug 3 16:31:09 2020 -0400
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-4"></a>
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-5"></a>    More drafting on balance-board
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-6"></a>
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-7"></a>commit 4e8cce32080b3832af2f5815cb9654abb3cbe040
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-8"></a>Author: CORRECT_NAME &lt;CORRECT_EMAIL&gt;
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-9"></a>Date:   Sun Aug 2 22:42:28 2020 -0400
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-10"></a>
-<a name="rest_code_b0843d4233f3455c9f47dc1013918846-11"></a>    writing
+<pre class="code text"><a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-1"></a>commit fb786d1a0782810299d0a58a8155d106c58e94e8 (HEAD -&gt; src)
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-2"></a>Author: BAD_NAME &lt;OLD_EMAIL&gt;
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-3"></a>Date:   Mon Aug 3 16:31:09 2020 -0400
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-4"></a>
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-5"></a>    More drafting on balance-board
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-6"></a>
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-7"></a>commit 4e8cce32080b3832af2f5815cb9654abb3cbe040
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-8"></a>Author: CORRECT_NAME &lt;CORRECT_EMAIL&gt;
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-9"></a>Date:   Sun Aug 2 22:42:28 2020 -0400
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-10"></a>
+<a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-11"></a>    writing
 </pre>
 <p>3. Create the script they provide filling in <code class="docutils literal">OLD_EMAIL</code>, <code class="docutils literal">CORRECT_NAME</code>,
 and <code class="docutils literal">CORRECT_EMAIL</code>.  I named mine <code class="docutils literal">fix.sh</code>.</p>
-<pre class="code text"><a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-1"></a>#!/bin/sh
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-2"></a>
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-3"></a>git filter-branch --env-filter '
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-4"></a>
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-5"></a>OLD_EMAIL="your-old-email@example.com"
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-6"></a>CORRECT_NAME="Your Correct Name"
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-7"></a>CORRECT_EMAIL="your-correct-email@example.com"
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-8"></a>
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-9"></a>if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-10"></a>then
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-11"></a>export GIT_COMMITTER_NAME="$CORRECT_NAME"
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-12"></a>export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-13"></a>fi
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-14"></a>if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-15"></a>then
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-16"></a>export GIT_AUTHOR_NAME="$CORRECT_NAME"
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-17"></a>export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-18"></a>fi
-<a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-19"></a>' --tag-name-filter cat -- --branches --tags
+<pre class="code text"><a name="rest_code_b6e6120525644b36b34265804e49231f-1"></a>#!/bin/sh
+<a name="rest_code_b6e6120525644b36b34265804e49231f-2"></a>
+<a name="rest_code_b6e6120525644b36b34265804e49231f-3"></a>git filter-branch --env-filter '
+<a name="rest_code_b6e6120525644b36b34265804e49231f-4"></a>
+<a name="rest_code_b6e6120525644b36b34265804e49231f-5"></a>OLD_EMAIL="your-old-email@example.com"
+<a name="rest_code_b6e6120525644b36b34265804e49231f-6"></a>CORRECT_NAME="Your Correct Name"
+<a name="rest_code_b6e6120525644b36b34265804e49231f-7"></a>CORRECT_EMAIL="your-correct-email@example.com"
+<a name="rest_code_b6e6120525644b36b34265804e49231f-8"></a>
+<a name="rest_code_b6e6120525644b36b34265804e49231f-9"></a>if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+<a name="rest_code_b6e6120525644b36b34265804e49231f-10"></a>then
+<a name="rest_code_b6e6120525644b36b34265804e49231f-11"></a>export GIT_COMMITTER_NAME="$CORRECT_NAME"
+<a name="rest_code_b6e6120525644b36b34265804e49231f-12"></a>export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+<a name="rest_code_b6e6120525644b36b34265804e49231f-13"></a>fi
+<a name="rest_code_b6e6120525644b36b34265804e49231f-14"></a>if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+<a name="rest_code_b6e6120525644b36b34265804e49231f-15"></a>then
+<a name="rest_code_b6e6120525644b36b34265804e49231f-16"></a>export GIT_AUTHOR_NAME="$CORRECT_NAME"
+<a name="rest_code_b6e6120525644b36b34265804e49231f-17"></a>export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+<a name="rest_code_b6e6120525644b36b34265804e49231f-18"></a>fi
+<a name="rest_code_b6e6120525644b36b34265804e49231f-19"></a>' --tag-name-filter cat -- --branches --tags
 </pre>
 <ol class="arabic simple" start="4">
 <li><p>Run the script</p></li>
 </ol>
-<pre class="code text"><a name="rest_code_b3faa39df3d04edb92d5c765bec47e56-1"></a>bash fix.sh
+<pre class="code text"><a name="rest_code_1d3c7a5070604c4bad93d31aec9e693e-1"></a>bash fix.sh
 </pre>
 <p>I got an output like this:</p>
-<pre class="code text"><a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-1"></a>Rewrite 6c9f6249c2c194676fe3aa3fdb5a0a83eab3d635 (1/7) (0 seconds passed, remainRewrite a18de98856d9c03740df59ddde8059f0fcb42509 (2/7) (0 seconds passed, remainRewrite 37b52d143b39f05c62851e044259ab8d1fe97725 (3/7) (0 seconds passed, remainRewrite c4f57f07893ba7c22b594f08d76794ab0b22b1a5 (4/7) (0 seconds passed, remainRewrite 63754887571d3eb125b460e3c4144f31b86c9bb9 (5/7) (0 seconds passed, remainRewrite 4e8cce32080b3832af2f5815cb9654abb3cbe040 (6/7) (0 seconds passed, remainRewrite fb786d1a0782810299d0a58a8155d106c58e94e8 (7/7) (0 seconds passed, remaining 0 predicted)
-<a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-2"></a>WARNING: Ref 'refs/heads/master' is unchanged
-<a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-3"></a>Ref 'refs/heads/src' was rewritten
+<pre class="code text"><a name="rest_code_cfa137a3fc99456ca5c74d666548f6af-1"></a>Rewrite 6c9f6249c2c194676fe3aa3fdb5a0a83eab3d635 (1/7) (0 seconds passed, remainRewrite a18de98856d9c03740df59ddde8059f0fcb42509 (2/7) (0 seconds passed, remainRewrite 37b52d143b39f05c62851e044259ab8d1fe97725 (3/7) (0 seconds passed, remainRewrite c4f57f07893ba7c22b594f08d76794ab0b22b1a5 (4/7) (0 seconds passed, remainRewrite 63754887571d3eb125b460e3c4144f31b86c9bb9 (5/7) (0 seconds passed, remainRewrite 4e8cce32080b3832af2f5815cb9654abb3cbe040 (6/7) (0 seconds passed, remainRewrite fb786d1a0782810299d0a58a8155d106c58e94e8 (7/7) (0 seconds passed, remaining 0 predicted)
+<a name="rest_code_cfa137a3fc99456ca5c74d666548f6af-2"></a>WARNING: Ref 'refs/heads/master' is unchanged
+<a name="rest_code_cfa137a3fc99456ca5c74d666548f6af-3"></a>Ref 'refs/heads/src' was rewritten
 </pre>
 <p>5. Double check that the commit data you wanted changed is changed:
 <code class="docutils literal">git log</code>.  Mine was all good.</p>
 <ol class="arabic simple" start="6">
 <li><p>Push the new history to the server:</p></li>
 </ol>
-<pre class="code text"><a name="rest_code_a71aed9b29774e9abebdad83282d1103-1"></a>git push --force --tags origin 'refs/heads/*'
+<pre class="code text"><a name="rest_code_b09573b60c444ca7ad0f7bfcf2f86d68-1"></a>git push --force --tags origin 'refs/heads/*'
 </pre>
 <ol class="arabic simple" start="7">
 <li><p>You should see the changes in the web view of the repo as well now.</p></li>
@@ -211,6 +212,9 @@ and <code class="docutils literal">CORRECT_EMAIL</code>.  I named mine <code cla
     <aside class="postpromonav"><nav><ul class="pager hidden-print">
 <li class="previous">
                 <a href="../self-balancing-cost-assessment/" rel="prev" title="Self-Balancing Cost Assessment">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../redis-version-issues/" rel="next" title="Redis Version Issues">Next post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         

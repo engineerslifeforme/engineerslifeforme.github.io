@@ -1,5 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Tue, 04 Aug 2020 03:10:46 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Edit Git Author History</title><link>https://engineerslifeforme.github.io/posts/edit-git-author-history/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Sun, 09 Aug 2020 03:16:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Redis Version Issues</title><link>https://engineerslifeforme.github.io/posts/redis-version-issues/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="resources"&gt;
+&lt;h2&gt;Resources&lt;/h2&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;&lt;p&gt;` Redis Celery Django Setup &amp;lt;&lt;a class="reference external" href="https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/"&gt;https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/&lt;/a&gt;&amp;gt;`_&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="background"&gt;
+&lt;h2&gt;Background&lt;/h2&gt;
+&lt;p&gt;I have a Django side project.  I am using celery + redis for some long running
+tasks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="notes"&gt;
+&lt;h2&gt;Notes&lt;/h2&gt;
+&lt;p&gt;I have run into this issue in the past, and it is super confusing to debug.
+A random redis error from the celery process is thrown with almost no
+helpful information:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_d17df79631f74128904849394c7d5cd4-1"&gt;&lt;/a&gt;redis.exceptions.ResponseError: wrong number of arguments for 'set' command
+&lt;a name="rest_code_d17df79631f74128904849394c7d5cd4-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_d17df79631f74128904849394c7d5cd4-3"&gt;&lt;/a&gt;redis.exceptions.ResponseError: wrong number of arguments for 'ping' command
+&lt;/pre&gt;&lt;p&gt;In my case it is due to one (very old) version of redis being installed on my
+computer and obviously in my path.  You have probably followed the instructions
+of a resource like #1 above.  It instructs to download the tarball, extract,
+then &lt;code class="docutils literal"&gt;make install&lt;/code&gt;.  After this you should be able to magically
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;redis-server&lt;/span&gt;&lt;/code&gt;.  In my case, &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;redis-server&lt;/span&gt;&lt;/code&gt; does indeed run redis, but
+it runs a very old version of redis (2.6.9 in my case).&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-1"&gt;&lt;/a&gt;[74237] 08 Aug 23:08:08.159 * Max number of open files set to 10032
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-2"&gt;&lt;/a&gt;                _._
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-3"&gt;&lt;/a&gt;        _.-``__ ''-._
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-4"&gt;&lt;/a&gt;    _.-``    `.  `_.  ''-._           Redis 2.6.9 (00000000/0) 64 bit
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-5"&gt;&lt;/a&gt;.-`` .-```.  ```\/    _.,_ ''-._
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-6"&gt;&lt;/a&gt;(    '      ,       .-`  | `,    )     Running in stand alone mode
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-7"&gt;&lt;/a&gt;|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-8"&gt;&lt;/a&gt;|    `-._   `._    /     _.-'    |     PID: 74237
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-9"&gt;&lt;/a&gt;`-._    `-._  `-./  _.-'    _.-'
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-10"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-11"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |           http://redis.io
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-12"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-13"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-14"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-15"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-16"&gt;&lt;/a&gt;    `-._    `-.__.-'    _.-'
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-17"&gt;&lt;/a&gt;        `-._        _.-'
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-18"&gt;&lt;/a&gt;            `-.__.-'
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-20"&gt;&lt;/a&gt;[74237] 08 Aug 23:08:08.163 # Server started, Redis version 2.6.9
+&lt;/pre&gt;&lt;div class="admonition note"&gt;
+&lt;p class="admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;Notice the version number(s) in the terminal.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;Redis at the time of this writing is at version 6.0.6.  Even running
+&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;redis-server&lt;/span&gt;&lt;/code&gt; in the src folder where it was built is not successful.&lt;/p&gt;
+&lt;p&gt;Success for me involved putting the terminal in the main redis directory
+and executing:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_ea9c77d87b984ffda52e833d3749dbcf-1"&gt;&lt;/a&gt;src/redis-server
+&lt;/pre&gt;&lt;p&gt;This produces the expected redis version execution:&lt;/p&gt;
+&lt;pre class="code text"&gt;&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-1"&gt;&lt;/a&gt;4319:M 08 Aug 2020 23:11:21.226 * Increased maximum number of open files to 10032 (it was originally set to 256).
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-2"&gt;&lt;/a&gt;                _._
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-3"&gt;&lt;/a&gt;        _.-``__ ''-._
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-4"&gt;&lt;/a&gt;    _.-``    `.  `_.  ''-._           Redis 6.0.6 (00000000/0) 64 bit
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-5"&gt;&lt;/a&gt;.-`` .-```.  ```\/    _.,_ ''-._
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-6"&gt;&lt;/a&gt;(    '      ,       .-`  | `,    )     Running in standalone mode
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-7"&gt;&lt;/a&gt;|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-8"&gt;&lt;/a&gt;|    `-._   `._    /     _.-'    |     PID: 74319
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-9"&gt;&lt;/a&gt;`-._    `-._  `-./  _.-'    _.-'
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-10"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-11"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |           http://redis.io
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-12"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-13"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-14"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-15"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-16"&gt;&lt;/a&gt;    `-._    `-.__.-'    _.-'
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-17"&gt;&lt;/a&gt;        `-._        _.-'
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-18"&gt;&lt;/a&gt;            `-.__.-'
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-20"&gt;&lt;/a&gt;74319:M 08 Aug 2020 23:11:21.231 # Server initialized
+&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-21"&gt;&lt;/a&gt;74319:M 08 Aug 2020 23:11:21.233 * Loading RDB produced by version 6.0.6
+&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/redis-version-issues/</guid><pubDate>Sun, 09 Aug 2020 03:14:37 GMT</pubDate></item><item><title>Edit Git Author History</title><link>https://engineerslifeforme.github.io/posts/edit-git-author-history/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
 &lt;h2&gt;Purpose&lt;/h2&gt;
 &lt;p&gt;As I mentioned in a previous post, I am attempting to keep the git
 history of the blog prestine.  Well, I switched to another computer
@@ -27,58 +103,58 @@ collaboraters.  A &lt;code class="docutils literal"&gt;git fetch&lt;/code&gt; wi
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;&lt;p&gt;Create a place to clone a fresh copy of the repo&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-1"&gt;&lt;/a&gt;mkdir temp_blog
-&lt;a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-2"&gt;&lt;/a&gt;cd temp_blog
-&lt;a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-3"&gt;&lt;/a&gt;git clone --bare https://BLOG_URL
-&lt;a name="rest_code_ec97912d72bc4f908e6c54777d24b94b-4"&gt;&lt;/a&gt;cd BLOG_REPO
+&lt;pre class="code text"&gt;&lt;a name="rest_code_5f10f174cf664eecbb1bee83b02d1105-1"&gt;&lt;/a&gt;mkdir temp_blog
+&lt;a name="rest_code_5f10f174cf664eecbb1bee83b02d1105-2"&gt;&lt;/a&gt;cd temp_blog
+&lt;a name="rest_code_5f10f174cf664eecbb1bee83b02d1105-3"&gt;&lt;/a&gt;git clone --bare https://BLOG_URL
+&lt;a name="rest_code_5f10f174cf664eecbb1bee83b02d1105-4"&gt;&lt;/a&gt;cd BLOG_REPO
 &lt;/pre&gt;&lt;p&gt;2. Go into your commits and find the offending commit(s).  At the terminal use &lt;code class="docutils literal"&gt;git log&lt;/code&gt;.
 You should see something like:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-1"&gt;&lt;/a&gt;commit fb786d1a0782810299d0a58a8155d106c58e94e8 (HEAD -&amp;gt; src)
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-2"&gt;&lt;/a&gt;Author: BAD_NAME &amp;lt;OLD_EMAIL&amp;gt;
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-3"&gt;&lt;/a&gt;Date:   Mon Aug 3 16:31:09 2020 -0400
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-5"&gt;&lt;/a&gt;    More drafting on balance-board
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-6"&gt;&lt;/a&gt;
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-7"&gt;&lt;/a&gt;commit 4e8cce32080b3832af2f5815cb9654abb3cbe040
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-8"&gt;&lt;/a&gt;Author: CORRECT_NAME &amp;lt;CORRECT_EMAIL&amp;gt;
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-9"&gt;&lt;/a&gt;Date:   Sun Aug 2 22:42:28 2020 -0400
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-10"&gt;&lt;/a&gt;
-&lt;a name="rest_code_b0843d4233f3455c9f47dc1013918846-11"&gt;&lt;/a&gt;    writing
+&lt;pre class="code text"&gt;&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-1"&gt;&lt;/a&gt;commit fb786d1a0782810299d0a58a8155d106c58e94e8 (HEAD -&amp;gt; src)
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-2"&gt;&lt;/a&gt;Author: BAD_NAME &amp;lt;OLD_EMAIL&amp;gt;
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-3"&gt;&lt;/a&gt;Date:   Mon Aug 3 16:31:09 2020 -0400
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-5"&gt;&lt;/a&gt;    More drafting on balance-board
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-6"&gt;&lt;/a&gt;
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-7"&gt;&lt;/a&gt;commit 4e8cce32080b3832af2f5815cb9654abb3cbe040
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-8"&gt;&lt;/a&gt;Author: CORRECT_NAME &amp;lt;CORRECT_EMAIL&amp;gt;
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-9"&gt;&lt;/a&gt;Date:   Sun Aug 2 22:42:28 2020 -0400
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-10"&gt;&lt;/a&gt;
+&lt;a name="rest_code_34d6d898c38c49038ce09b2c716c19a4-11"&gt;&lt;/a&gt;    writing
 &lt;/pre&gt;&lt;p&gt;3. Create the script they provide filling in &lt;code class="docutils literal"&gt;OLD_EMAIL&lt;/code&gt;, &lt;code class="docutils literal"&gt;CORRECT_NAME&lt;/code&gt;,
 and &lt;code class="docutils literal"&gt;CORRECT_EMAIL&lt;/code&gt;.  I named mine &lt;code class="docutils literal"&gt;fix.sh&lt;/code&gt;.&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-1"&gt;&lt;/a&gt;#!/bin/sh
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-3"&gt;&lt;/a&gt;git filter-branch --env-filter '
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-4"&gt;&lt;/a&gt;
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-5"&gt;&lt;/a&gt;OLD_EMAIL="your-old-email@example.com"
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-6"&gt;&lt;/a&gt;CORRECT_NAME="Your Correct Name"
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-7"&gt;&lt;/a&gt;CORRECT_EMAIL="your-correct-email@example.com"
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-8"&gt;&lt;/a&gt;
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-9"&gt;&lt;/a&gt;if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-10"&gt;&lt;/a&gt;then
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-11"&gt;&lt;/a&gt;export GIT_COMMITTER_NAME="$CORRECT_NAME"
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-12"&gt;&lt;/a&gt;export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-13"&gt;&lt;/a&gt;fi
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-14"&gt;&lt;/a&gt;if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-15"&gt;&lt;/a&gt;then
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-16"&gt;&lt;/a&gt;export GIT_AUTHOR_NAME="$CORRECT_NAME"
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-17"&gt;&lt;/a&gt;export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-18"&gt;&lt;/a&gt;fi
-&lt;a name="rest_code_dc8dd4cd78db4534a49158c8708543b7-19"&gt;&lt;/a&gt;' --tag-name-filter cat -- --branches --tags
+&lt;pre class="code text"&gt;&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-1"&gt;&lt;/a&gt;#!/bin/sh
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-3"&gt;&lt;/a&gt;git filter-branch --env-filter '
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-4"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-5"&gt;&lt;/a&gt;OLD_EMAIL="your-old-email@example.com"
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-6"&gt;&lt;/a&gt;CORRECT_NAME="Your Correct Name"
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-7"&gt;&lt;/a&gt;CORRECT_EMAIL="your-correct-email@example.com"
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-8"&gt;&lt;/a&gt;
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-9"&gt;&lt;/a&gt;if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-10"&gt;&lt;/a&gt;then
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-11"&gt;&lt;/a&gt;export GIT_COMMITTER_NAME="$CORRECT_NAME"
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-12"&gt;&lt;/a&gt;export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-13"&gt;&lt;/a&gt;fi
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-14"&gt;&lt;/a&gt;if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-15"&gt;&lt;/a&gt;then
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-16"&gt;&lt;/a&gt;export GIT_AUTHOR_NAME="$CORRECT_NAME"
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-17"&gt;&lt;/a&gt;export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-18"&gt;&lt;/a&gt;fi
+&lt;a name="rest_code_b6e6120525644b36b34265804e49231f-19"&gt;&lt;/a&gt;' --tag-name-filter cat -- --branches --tags
 &lt;/pre&gt;&lt;ol class="arabic simple" start="4"&gt;
 &lt;li&gt;&lt;p&gt;Run the script&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_b3faa39df3d04edb92d5c765bec47e56-1"&gt;&lt;/a&gt;bash fix.sh
+&lt;pre class="code text"&gt;&lt;a name="rest_code_1d3c7a5070604c4bad93d31aec9e693e-1"&gt;&lt;/a&gt;bash fix.sh
 &lt;/pre&gt;&lt;p&gt;I got an output like this:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-1"&gt;&lt;/a&gt;Rewrite 6c9f6249c2c194676fe3aa3fdb5a0a83eab3d635 (1/7) (0 seconds passed, remainRewrite a18de98856d9c03740df59ddde8059f0fcb42509 (2/7) (0 seconds passed, remainRewrite 37b52d143b39f05c62851e044259ab8d1fe97725 (3/7) (0 seconds passed, remainRewrite c4f57f07893ba7c22b594f08d76794ab0b22b1a5 (4/7) (0 seconds passed, remainRewrite 63754887571d3eb125b460e3c4144f31b86c9bb9 (5/7) (0 seconds passed, remainRewrite 4e8cce32080b3832af2f5815cb9654abb3cbe040 (6/7) (0 seconds passed, remainRewrite fb786d1a0782810299d0a58a8155d106c58e94e8 (7/7) (0 seconds passed, remaining 0 predicted)
-&lt;a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-2"&gt;&lt;/a&gt;WARNING: Ref 'refs/heads/master' is unchanged
-&lt;a name="rest_code_66fcda09ad9b4c3ca7457dace0ad8d33-3"&gt;&lt;/a&gt;Ref 'refs/heads/src' was rewritten
+&lt;pre class="code text"&gt;&lt;a name="rest_code_cfa137a3fc99456ca5c74d666548f6af-1"&gt;&lt;/a&gt;Rewrite 6c9f6249c2c194676fe3aa3fdb5a0a83eab3d635 (1/7) (0 seconds passed, remainRewrite a18de98856d9c03740df59ddde8059f0fcb42509 (2/7) (0 seconds passed, remainRewrite 37b52d143b39f05c62851e044259ab8d1fe97725 (3/7) (0 seconds passed, remainRewrite c4f57f07893ba7c22b594f08d76794ab0b22b1a5 (4/7) (0 seconds passed, remainRewrite 63754887571d3eb125b460e3c4144f31b86c9bb9 (5/7) (0 seconds passed, remainRewrite 4e8cce32080b3832af2f5815cb9654abb3cbe040 (6/7) (0 seconds passed, remainRewrite fb786d1a0782810299d0a58a8155d106c58e94e8 (7/7) (0 seconds passed, remaining 0 predicted)
+&lt;a name="rest_code_cfa137a3fc99456ca5c74d666548f6af-2"&gt;&lt;/a&gt;WARNING: Ref 'refs/heads/master' is unchanged
+&lt;a name="rest_code_cfa137a3fc99456ca5c74d666548f6af-3"&gt;&lt;/a&gt;Ref 'refs/heads/src' was rewritten
 &lt;/pre&gt;&lt;p&gt;5. Double check that the commit data you wanted changed is changed:
 &lt;code class="docutils literal"&gt;git log&lt;/code&gt;.  Mine was all good.&lt;/p&gt;
 &lt;ol class="arabic simple" start="6"&gt;
 &lt;li&gt;&lt;p&gt;Push the new history to the server:&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_a71aed9b29774e9abebdad83282d1103-1"&gt;&lt;/a&gt;git push --force --tags origin 'refs/heads/*'
+&lt;pre class="code text"&gt;&lt;a name="rest_code_b09573b60c444ca7ad0f7bfcf2f86d68-1"&gt;&lt;/a&gt;git push --force --tags origin 'refs/heads/*'
 &lt;/pre&gt;&lt;ol class="arabic simple" start="7"&gt;
 &lt;li&gt;&lt;p&gt;You should see the changes in the web view of the repo as well now.&lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;You should delete &lt;code class="docutils literal"&gt;temp_blog&lt;/code&gt; now.&lt;/p&gt;&lt;/li&gt;
@@ -168,31 +244,31 @@ for the repo here:&lt;/p&gt;
 &lt;ol class="arabic simple" start="2"&gt;
 &lt;li&gt;&lt;p&gt;I followed the style of &lt;code class="docutils literal"&gt;conf.py&lt;/code&gt; when adding notebook support:&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-1"&gt;&lt;/a&gt;POSTS = (
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-2"&gt;&lt;/a&gt;    ("posts/*.rst", "posts", "post.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-3"&gt;&lt;/a&gt;    ("posts/*.md", "posts", "post.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-4"&gt;&lt;/a&gt;    ("posts/*.txt", "posts", "post.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-5"&gt;&lt;/a&gt;    ("posts/*.html", "posts", "post.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-6"&gt;&lt;/a&gt;    ("posts/*.ipynb", "posts", "post.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-7"&gt;&lt;/a&gt;)
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-8"&gt;&lt;/a&gt;PAGES = (
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-9"&gt;&lt;/a&gt;    ("pages/*.rst", "pages", "page.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-10"&gt;&lt;/a&gt;    ("pages/*.md", "pages", "page.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-11"&gt;&lt;/a&gt;    ("pages/*.txt", "pages", "page.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-12"&gt;&lt;/a&gt;    ("pages/*.html", "pages", "page.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-13"&gt;&lt;/a&gt;    ("pages/*.ipynb", "pages", "page.tmpl"),
-&lt;a name="rest_code_5432a31b7c804ec4ac7d241e314ad5e1-14"&gt;&lt;/a&gt;)
+&lt;pre class="code text"&gt;&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-1"&gt;&lt;/a&gt;POSTS = (
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-2"&gt;&lt;/a&gt;    ("posts/*.rst", "posts", "post.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-3"&gt;&lt;/a&gt;    ("posts/*.md", "posts", "post.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-4"&gt;&lt;/a&gt;    ("posts/*.txt", "posts", "post.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-5"&gt;&lt;/a&gt;    ("posts/*.html", "posts", "post.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-6"&gt;&lt;/a&gt;    ("posts/*.ipynb", "posts", "post.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-7"&gt;&lt;/a&gt;)
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-8"&gt;&lt;/a&gt;PAGES = (
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-9"&gt;&lt;/a&gt;    ("pages/*.rst", "pages", "page.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-10"&gt;&lt;/a&gt;    ("pages/*.md", "pages", "page.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-11"&gt;&lt;/a&gt;    ("pages/*.txt", "pages", "page.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-12"&gt;&lt;/a&gt;    ("pages/*.html", "pages", "page.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-13"&gt;&lt;/a&gt;    ("pages/*.ipynb", "pages", "page.tmpl"),
+&lt;a name="rest_code_71fcfebad16b45c69d69562b371d67f3-14"&gt;&lt;/a&gt;)
 &lt;/pre&gt;&lt;p&gt;3. I created an &lt;code class="docutils literal"&gt;About&lt;/code&gt; page similar to the examples Bio page.  Adding this page to
 the Navigation links did not work.  I had to use:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-1"&gt;&lt;/a&gt;NAVIGATION_LINKS = {
-&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-2"&gt;&lt;/a&gt;    DEFAULT_LANG: (
-&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-3"&gt;&lt;/a&gt;        ("/archive.html", "Archives"),
-&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-4"&gt;&lt;/a&gt;        ("/categories/index.html", "Tags"),
-&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-5"&gt;&lt;/a&gt;        ("/rss.xml", "RSS feed"),
-&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-6"&gt;&lt;/a&gt;        ("/index.html", "Home"),
-&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-7"&gt;&lt;/a&gt;        ("/pages/about/index.html", "About"),
-&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-8"&gt;&lt;/a&gt;    ),
-&lt;a name="rest_code_44aaaeae84744a74aaef682aed39e708-9"&gt;&lt;/a&gt;}
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-1"&gt;&lt;/a&gt;NAVIGATION_LINKS = {
+&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-2"&gt;&lt;/a&gt;    DEFAULT_LANG: (
+&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-3"&gt;&lt;/a&gt;        ("/archive.html", "Archives"),
+&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-4"&gt;&lt;/a&gt;        ("/categories/index.html", "Tags"),
+&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-5"&gt;&lt;/a&gt;        ("/rss.xml", "RSS feed"),
+&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-6"&gt;&lt;/a&gt;        ("/index.html", "Home"),
+&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-7"&gt;&lt;/a&gt;        ("/pages/about/index.html", "About"),
+&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-8"&gt;&lt;/a&gt;    ),
+&lt;a name="rest_code_e8c0d9c7638b407dbc9425c81e687285-9"&gt;&lt;/a&gt;}
 &lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/blog-setup/</guid><pubDate>Fri, 31 Jul 2020 02:32:30 GMT</pubDate></item><item><title>Blog Repo Setup</title><link>https://engineerslifeforme.github.io/posts/blog-repo-setup/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="intro"&gt;
 &lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;I have likely too many git repository options that I have created over time.
@@ -218,13 +294,13 @@ show the email and user I have setup for this blog/repo.&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;
 &lt;li&gt;&lt;p&gt;Initialize the repo.  My repo is in a folder called &lt;code class="docutils literal"&gt;blog&lt;/code&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_e0613bcab7ad41558176b342228185bd-1"&gt;&lt;/a&gt;cd blog
-&lt;a name="rest_code_e0613bcab7ad41558176b342228185bd-2"&gt;&lt;/a&gt;git init
+&lt;pre class="code text"&gt;&lt;a name="rest_code_c122a13308134c6dafdc1471f78984ea-1"&gt;&lt;/a&gt;cd blog
+&lt;a name="rest_code_c122a13308134c6dafdc1471f78984ea-2"&gt;&lt;/a&gt;git init
 &lt;/pre&gt;&lt;ol class="arabic simple" start="2"&gt;
 &lt;li&gt;&lt;p&gt;Run the following git configuration commands (filling in your own details)&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_7b8b143d33ed44c38e6b60ccb625e5e8-1"&gt;&lt;/a&gt;git config user.name "Creative Rigor, LLC"
-&lt;a name="rest_code_7b8b143d33ed44c38e6b60ccb625e5e8-2"&gt;&lt;/a&gt;git config user.email creativerigor [at] gmail.com
+&lt;pre class="code text"&gt;&lt;a name="rest_code_0615789d559446c3ae7aa3fa599b1a1e-1"&gt;&lt;/a&gt;git config user.name "Creative Rigor, LLC"
+&lt;a name="rest_code_0615789d559446c3ae7aa3fa599b1a1e-2"&gt;&lt;/a&gt;git config user.email creativerigor [at] gmail.com
 &lt;/pre&gt;&lt;p&gt;Format your email address properly.&lt;/p&gt;
 &lt;p&gt;Definitely do not use the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--global&lt;/span&gt;&lt;/code&gt; flag which will change the default
 user settings for all repos.&lt;/p&gt;
