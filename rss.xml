@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Sun, 09 Aug 2020 03:16:34 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Redis Version Issues</title><link>https://engineerslifeforme.github.io/posts/redis-version-issues/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="resources"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>An Engineer's Life for Me!</title><link>https://engineerslifeforme.github.io/</link><description>Capturing My Engineering Process</description><atom:link href="https://engineerslifeforme.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:creativerigor@gmail.com"&gt;An Engineer&lt;/a&gt; </copyright><lastBuildDate>Sun, 09 Aug 2020 03:21:51 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Redis Version Issues</title><link>https://engineerslifeforme.github.io/posts/redis-version-issues/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="resources"&gt;
 &lt;h2&gt;Resources&lt;/h2&gt;
 &lt;ol class="arabic simple"&gt;
-&lt;li&gt;&lt;p&gt;` Redis Celery Django Setup &amp;lt;&lt;a class="reference external" href="https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/"&gt;https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/&lt;/a&gt;&amp;gt;`_&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;a class="reference external" href="https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/"&gt;Redis Celery Django Setup&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;div class="section" id="background"&gt;
@@ -15,35 +15,35 @@ tasks.&lt;/p&gt;
 &lt;p&gt;I have run into this issue in the past, and it is super confusing to debug.
 A random redis error from the celery process is thrown with almost no
 helpful information:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_d17df79631f74128904849394c7d5cd4-1"&gt;&lt;/a&gt;redis.exceptions.ResponseError: wrong number of arguments for 'set' command
-&lt;a name="rest_code_d17df79631f74128904849394c7d5cd4-2"&gt;&lt;/a&gt;
-&lt;a name="rest_code_d17df79631f74128904849394c7d5cd4-3"&gt;&lt;/a&gt;redis.exceptions.ResponseError: wrong number of arguments for 'ping' command
+&lt;pre class="code text"&gt;&lt;a name="rest_code_e64e5890c3634ec3bcedff6e4f670146-1"&gt;&lt;/a&gt;redis.exceptions.ResponseError: wrong number of arguments for 'set' command
+&lt;a name="rest_code_e64e5890c3634ec3bcedff6e4f670146-2"&gt;&lt;/a&gt;
+&lt;a name="rest_code_e64e5890c3634ec3bcedff6e4f670146-3"&gt;&lt;/a&gt;redis.exceptions.ResponseError: wrong number of arguments for 'ping' command
 &lt;/pre&gt;&lt;p&gt;In my case it is due to one (very old) version of redis being installed on my
 computer and obviously in my path.  You have probably followed the instructions
 of a resource like #1 above.  It instructs to download the tarball, extract,
 then &lt;code class="docutils literal"&gt;make install&lt;/code&gt;.  After this you should be able to magically
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;redis-server&lt;/span&gt;&lt;/code&gt;.  In my case, &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;redis-server&lt;/span&gt;&lt;/code&gt; does indeed run redis, but
 it runs a very old version of redis (2.6.9 in my case).&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-1"&gt;&lt;/a&gt;[74237] 08 Aug 23:08:08.159 * Max number of open files set to 10032
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-2"&gt;&lt;/a&gt;                _._
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-3"&gt;&lt;/a&gt;        _.-``__ ''-._
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-4"&gt;&lt;/a&gt;    _.-``    `.  `_.  ''-._           Redis 2.6.9 (00000000/0) 64 bit
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-5"&gt;&lt;/a&gt;.-`` .-```.  ```\/    _.,_ ''-._
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-6"&gt;&lt;/a&gt;(    '      ,       .-`  | `,    )     Running in stand alone mode
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-7"&gt;&lt;/a&gt;|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-8"&gt;&lt;/a&gt;|    `-._   `._    /     _.-'    |     PID: 74237
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-9"&gt;&lt;/a&gt;`-._    `-._  `-./  _.-'    _.-'
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-10"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-11"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |           http://redis.io
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-12"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-13"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-14"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-15"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-16"&gt;&lt;/a&gt;    `-._    `-.__.-'    _.-'
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-17"&gt;&lt;/a&gt;        `-._        _.-'
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-18"&gt;&lt;/a&gt;            `-.__.-'
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-19"&gt;&lt;/a&gt;
-&lt;a name="rest_code_250318b127c8402195e7d2b6b89c9783-20"&gt;&lt;/a&gt;[74237] 08 Aug 23:08:08.163 # Server started, Redis version 2.6.9
+&lt;pre class="code text"&gt;&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-1"&gt;&lt;/a&gt;[74237] 08 Aug 23:08:08.159 * Max number of open files set to 10032
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-2"&gt;&lt;/a&gt;                _._
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-3"&gt;&lt;/a&gt;        _.-``__ ''-._
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-4"&gt;&lt;/a&gt;    _.-``    `.  `_.  ''-._           Redis 2.6.9 (00000000/0) 64 bit
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-5"&gt;&lt;/a&gt;.-`` .-```.  ```\/    _.,_ ''-._
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-6"&gt;&lt;/a&gt;(    '      ,       .-`  | `,    )     Running in stand alone mode
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-7"&gt;&lt;/a&gt;|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-8"&gt;&lt;/a&gt;|    `-._   `._    /     _.-'    |     PID: 74237
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-9"&gt;&lt;/a&gt;`-._    `-._  `-./  _.-'    _.-'
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-10"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-11"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |           http://redis.io
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-12"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-13"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-14"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-15"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-16"&gt;&lt;/a&gt;    `-._    `-.__.-'    _.-'
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-17"&gt;&lt;/a&gt;        `-._        _.-'
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-18"&gt;&lt;/a&gt;            `-.__.-'
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_5d39478166ee41279267068b659d3dfc-20"&gt;&lt;/a&gt;[74237] 08 Aug 23:08:08.163 # Server started, Redis version 2.6.9
 &lt;/pre&gt;&lt;div class="admonition note"&gt;
 &lt;p class="admonition-title"&gt;Note&lt;/p&gt;
 &lt;p&gt;Notice the version number(s) in the terminal.&lt;/p&gt;
@@ -52,29 +52,29 @@ it runs a very old version of redis (2.6.9 in my case).&lt;/p&gt;
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;redis-server&lt;/span&gt;&lt;/code&gt; in the src folder where it was built is not successful.&lt;/p&gt;
 &lt;p&gt;Success for me involved putting the terminal in the main redis directory
 and executing:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_ea9c77d87b984ffda52e833d3749dbcf-1"&gt;&lt;/a&gt;src/redis-server
+&lt;pre class="code text"&gt;&lt;a name="rest_code_0d61e37832d1404db4b39349485066b1-1"&gt;&lt;/a&gt;src/redis-server
 &lt;/pre&gt;&lt;p&gt;This produces the expected redis version execution:&lt;/p&gt;
-&lt;pre class="code text"&gt;&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-1"&gt;&lt;/a&gt;4319:M 08 Aug 2020 23:11:21.226 * Increased maximum number of open files to 10032 (it was originally set to 256).
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-2"&gt;&lt;/a&gt;                _._
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-3"&gt;&lt;/a&gt;        _.-``__ ''-._
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-4"&gt;&lt;/a&gt;    _.-``    `.  `_.  ''-._           Redis 6.0.6 (00000000/0) 64 bit
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-5"&gt;&lt;/a&gt;.-`` .-```.  ```\/    _.,_ ''-._
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-6"&gt;&lt;/a&gt;(    '      ,       .-`  | `,    )     Running in standalone mode
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-7"&gt;&lt;/a&gt;|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-8"&gt;&lt;/a&gt;|    `-._   `._    /     _.-'    |     PID: 74319
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-9"&gt;&lt;/a&gt;`-._    `-._  `-./  _.-'    _.-'
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-10"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-11"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |           http://redis.io
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-12"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-13"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-14"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-15"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-16"&gt;&lt;/a&gt;    `-._    `-.__.-'    _.-'
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-17"&gt;&lt;/a&gt;        `-._        _.-'
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-18"&gt;&lt;/a&gt;            `-.__.-'
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-19"&gt;&lt;/a&gt;
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-20"&gt;&lt;/a&gt;74319:M 08 Aug 2020 23:11:21.231 # Server initialized
-&lt;a name="rest_code_37e0dc792a364e5792b3c346f329b94a-21"&gt;&lt;/a&gt;74319:M 08 Aug 2020 23:11:21.233 * Loading RDB produced by version 6.0.6
+&lt;pre class="code text"&gt;&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-1"&gt;&lt;/a&gt;4319:M 08 Aug 2020 23:11:21.226 * Increased maximum number of open files to 10032 (it was originally set to 256).
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-2"&gt;&lt;/a&gt;                _._
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-3"&gt;&lt;/a&gt;        _.-``__ ''-._
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-4"&gt;&lt;/a&gt;    _.-``    `.  `_.  ''-._           Redis 6.0.6 (00000000/0) 64 bit
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-5"&gt;&lt;/a&gt;.-`` .-```.  ```\/    _.,_ ''-._
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-6"&gt;&lt;/a&gt;(    '      ,       .-`  | `,    )     Running in standalone mode
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-7"&gt;&lt;/a&gt;|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-8"&gt;&lt;/a&gt;|    `-._   `._    /     _.-'    |     PID: 74319
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-9"&gt;&lt;/a&gt;`-._    `-._  `-./  _.-'    _.-'
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-10"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-11"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |           http://redis.io
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-12"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-13"&gt;&lt;/a&gt;|`-._`-._    `-.__.-'    _.-'_.-'|
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-14"&gt;&lt;/a&gt;|    `-._`-._        _.-'_.-'    |
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-15"&gt;&lt;/a&gt;`-._    `-._`-.__.-'_.-'    _.-'
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-16"&gt;&lt;/a&gt;    `-._    `-.__.-'    _.-'
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-17"&gt;&lt;/a&gt;        `-._        _.-'
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-18"&gt;&lt;/a&gt;            `-.__.-'
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-19"&gt;&lt;/a&gt;
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-20"&gt;&lt;/a&gt;74319:M 08 Aug 2020 23:11:21.231 # Server initialized
+&lt;a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-21"&gt;&lt;/a&gt;74319:M 08 Aug 2020 23:11:21.233 * Loading RDB produced by version 6.0.6
 &lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</description><guid>https://engineerslifeforme.github.io/posts/redis-version-issues/</guid><pubDate>Sun, 09 Aug 2020 03:14:37 GMT</pubDate></item><item><title>Edit Git Author History</title><link>https://engineerslifeforme.github.io/posts/edit-git-author-history/</link><dc:creator>An Engineer</dc:creator><description>&lt;div&gt;&lt;div class="section" id="purpose"&gt;
 &lt;h2&gt;Purpose&lt;/h2&gt;
 &lt;p&gt;As I mentioned in a previous post, I am attempting to keep the git

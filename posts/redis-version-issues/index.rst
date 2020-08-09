@@ -10,7 +10,7 @@
 Resources
 ===========
 
-1. ` Redis Celery Django Setup <https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/>`_
+1. `Redis Celery Django Setup <https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/>`_
 
 Background
 ==========

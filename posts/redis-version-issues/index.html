@@ -20,12 +20,17 @@
 <meta property="og:url" content="https://engineerslifeforme.github.io/posts/redis-version-issues/">
 <meta property="og:description" content="Resources
 
-` Redis Celery Django Setup &lt;https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/&gt;`_
+Redis Celery Django Setup
 
 
 
 Background
-I have a Django side project.  I am using celery + redis for some lo">
+I have a Django side project.  I am using celery + redis for some long running
+tasks.
+
+
+Notes
+I have run into this issue in the past, and it is super">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-08-09T03:14:37Z">
 </head>
@@ -118,7 +123,7 @@ I have a Django side project.  I am using celery + redis for some lo">
 <div class="section" id="resources">
 <h2>Resources</h2>
 <ol class="arabic simple">
-<li><p>` Redis Celery Django Setup &lt;<a class="reference external" href="https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/">https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/</a>&gt;`_</p></li>
+<li><p><a class="reference external" href="https://stackabuse.com/asynchronous-tasks-in-django-with-redis-and-celery/">Redis Celery Django Setup</a></p></li>
 </ol>
 </div>
 <div class="section" id="background">
@@ -131,9 +136,9 @@ tasks.</p>
 <p>I have run into this issue in the past, and it is super confusing to debug.
 A random redis error from the celery process is thrown with almost no
 helpful information:</p>
-<pre class="code text"><a name="rest_code_d17df79631f74128904849394c7d5cd4-1"></a>redis.exceptions.ResponseError: wrong number of arguments for 'set' command
-<a name="rest_code_d17df79631f74128904849394c7d5cd4-2"></a>
-<a name="rest_code_d17df79631f74128904849394c7d5cd4-3"></a>redis.exceptions.ResponseError: wrong number of arguments for 'ping' command
+<pre class="code text"><a name="rest_code_e64e5890c3634ec3bcedff6e4f670146-1"></a>redis.exceptions.ResponseError: wrong number of arguments for 'set' command
+<a name="rest_code_e64e5890c3634ec3bcedff6e4f670146-2"></a>
+<a name="rest_code_e64e5890c3634ec3bcedff6e4f670146-3"></a>redis.exceptions.ResponseError: wrong number of arguments for 'ping' command
 </pre>
 <p>In my case it is due to one (very old) version of redis being installed on my
 computer and obviously in my path.  You have probably followed the instructions
@@ -141,26 +146,26 @@ of a resource like #1 above.  It instructs to download the tarball, extract,
 then <code class="docutils literal">make install</code>.  After this you should be able to magically
 <code class="docutils literal"><span class="pre">redis-server</span></code>.  In my case, <code class="docutils literal"><span class="pre">redis-server</span></code> does indeed run redis, but
 it runs a very old version of redis (2.6.9 in my case).</p>
-<pre class="code text"><a name="rest_code_250318b127c8402195e7d2b6b89c9783-1"></a>[74237] 08 Aug 23:08:08.159 * Max number of open files set to 10032
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-2"></a>                _._
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-3"></a>        _.-``__ ''-._
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-4"></a>    _.-``    `.  `_.  ''-._           Redis 2.6.9 (00000000/0) 64 bit
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-5"></a>.-`` .-```.  ```\/    _.,_ ''-._
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-6"></a>(    '      ,       .-`  | `,    )     Running in stand alone mode
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-7"></a>|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-8"></a>|    `-._   `._    /     _.-'    |     PID: 74237
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-9"></a>`-._    `-._  `-./  _.-'    _.-'
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-10"></a>|`-._`-._    `-.__.-'    _.-'_.-'|
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-11"></a>|    `-._`-._        _.-'_.-'    |           http://redis.io
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-12"></a>`-._    `-._`-.__.-'_.-'    _.-'
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-13"></a>|`-._`-._    `-.__.-'    _.-'_.-'|
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-14"></a>|    `-._`-._        _.-'_.-'    |
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-15"></a>`-._    `-._`-.__.-'_.-'    _.-'
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-16"></a>    `-._    `-.__.-'    _.-'
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-17"></a>        `-._        _.-'
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-18"></a>            `-.__.-'
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-19"></a>
-<a name="rest_code_250318b127c8402195e7d2b6b89c9783-20"></a>[74237] 08 Aug 23:08:08.163 # Server started, Redis version 2.6.9
+<pre class="code text"><a name="rest_code_5d39478166ee41279267068b659d3dfc-1"></a>[74237] 08 Aug 23:08:08.159 * Max number of open files set to 10032
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-2"></a>                _._
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-3"></a>        _.-``__ ''-._
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-4"></a>    _.-``    `.  `_.  ''-._           Redis 2.6.9 (00000000/0) 64 bit
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-5"></a>.-`` .-```.  ```\/    _.,_ ''-._
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-6"></a>(    '      ,       .-`  | `,    )     Running in stand alone mode
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-7"></a>|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-8"></a>|    `-._   `._    /     _.-'    |     PID: 74237
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-9"></a>`-._    `-._  `-./  _.-'    _.-'
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-10"></a>|`-._`-._    `-.__.-'    _.-'_.-'|
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-11"></a>|    `-._`-._        _.-'_.-'    |           http://redis.io
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-12"></a>`-._    `-._`-.__.-'_.-'    _.-'
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-13"></a>|`-._`-._    `-.__.-'    _.-'_.-'|
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-14"></a>|    `-._`-._        _.-'_.-'    |
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-15"></a>`-._    `-._`-.__.-'_.-'    _.-'
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-16"></a>    `-._    `-.__.-'    _.-'
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-17"></a>        `-._        _.-'
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-18"></a>            `-.__.-'
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-19"></a>
+<a name="rest_code_5d39478166ee41279267068b659d3dfc-20"></a>[74237] 08 Aug 23:08:08.163 # Server started, Redis version 2.6.9
 </pre>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -170,30 +175,30 @@ it runs a very old version of redis (2.6.9 in my case).</p>
 <code class="docutils literal"><span class="pre">redis-server</span></code> in the src folder where it was built is not successful.</p>
 <p>Success for me involved putting the terminal in the main redis directory
 and executing:</p>
-<pre class="code text"><a name="rest_code_ea9c77d87b984ffda52e833d3749dbcf-1"></a>src/redis-server
+<pre class="code text"><a name="rest_code_0d61e37832d1404db4b39349485066b1-1"></a>src/redis-server
 </pre>
 <p>This produces the expected redis version execution:</p>
-<pre class="code text"><a name="rest_code_37e0dc792a364e5792b3c346f329b94a-1"></a>4319:M 08 Aug 2020 23:11:21.226 * Increased maximum number of open files to 10032 (it was originally set to 256).
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-2"></a>                _._
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-3"></a>        _.-``__ ''-._
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-4"></a>    _.-``    `.  `_.  ''-._           Redis 6.0.6 (00000000/0) 64 bit
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-5"></a>.-`` .-```.  ```\/    _.,_ ''-._
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-6"></a>(    '      ,       .-`  | `,    )     Running in standalone mode
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-7"></a>|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-8"></a>|    `-._   `._    /     _.-'    |     PID: 74319
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-9"></a>`-._    `-._  `-./  _.-'    _.-'
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-10"></a>|`-._`-._    `-.__.-'    _.-'_.-'|
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-11"></a>|    `-._`-._        _.-'_.-'    |           http://redis.io
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-12"></a>`-._    `-._`-.__.-'_.-'    _.-'
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-13"></a>|`-._`-._    `-.__.-'    _.-'_.-'|
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-14"></a>|    `-._`-._        _.-'_.-'    |
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-15"></a>`-._    `-._`-.__.-'_.-'    _.-'
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-16"></a>    `-._    `-.__.-'    _.-'
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-17"></a>        `-._        _.-'
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-18"></a>            `-.__.-'
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-19"></a>
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-20"></a>74319:M 08 Aug 2020 23:11:21.231 # Server initialized
-<a name="rest_code_37e0dc792a364e5792b3c346f329b94a-21"></a>74319:M 08 Aug 2020 23:11:21.233 * Loading RDB produced by version 6.0.6
+<pre class="code text"><a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-1"></a>4319:M 08 Aug 2020 23:11:21.226 * Increased maximum number of open files to 10032 (it was originally set to 256).
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-2"></a>                _._
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-3"></a>        _.-``__ ''-._
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-4"></a>    _.-``    `.  `_.  ''-._           Redis 6.0.6 (00000000/0) 64 bit
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-5"></a>.-`` .-```.  ```\/    _.,_ ''-._
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-6"></a>(    '      ,       .-`  | `,    )     Running in standalone mode
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-7"></a>|`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-8"></a>|    `-._   `._    /     _.-'    |     PID: 74319
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-9"></a>`-._    `-._  `-./  _.-'    _.-'
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-10"></a>|`-._`-._    `-.__.-'    _.-'_.-'|
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-11"></a>|    `-._`-._        _.-'_.-'    |           http://redis.io
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-12"></a>`-._    `-._`-.__.-'_.-'    _.-'
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-13"></a>|`-._`-._    `-.__.-'    _.-'_.-'|
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-14"></a>|    `-._`-._        _.-'_.-'    |
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-15"></a>`-._    `-._`-.__.-'_.-'    _.-'
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-16"></a>    `-._    `-.__.-'    _.-'
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-17"></a>        `-._        _.-'
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-18"></a>            `-.__.-'
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-19"></a>
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-20"></a>74319:M 08 Aug 2020 23:11:21.231 # Server initialized
+<a name="rest_code_84e75c98f0a04bf1b425d905a42658f1-21"></a>74319:M 08 Aug 2020 23:11:21.233 * Loading RDB produced by version 6.0.6
 </pre>
 </div>
 </div>
