@@ -7,6 +7,8 @@ Resources
 
 3. `How to uninstall Toolbox <https://docs.docker.com/toolbox/toolbox_install_mac/#how-to-uninstall-toolbox>`_
 
+4. `Install Docker Desktop on Mac <https://docs.docker.com/docker-for-mac/install/>`_
+
 Symptoms
 =========
 
@@ -32,3 +34,8 @@ I suspect all I really needed to do to fix my orinal symptoms was this:
 
     eval $(docker-machine env default)
 
+FWIW, the above did not help me on my mac mini where I had not uninstalled Docker Toolbox.
+I had no machines when ``docker-machine ls``, so I decided to go ahead and follow the 
+instructions in resource 3.  Then I will install Docker Desktop for Mac.
+
+After the fresh install all seems to be well with ``docker`` CLI commands.
