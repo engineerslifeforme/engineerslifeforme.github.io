@@ -11,11 +11,25 @@ Resources
 
 5. `docker-alpine issue (github) <https://github.com/alpinelinux/docker-alpine/issues/91>`_
 
+6. `SO: Error: could not determine PostgreSQL version from 10.4 <https://askubuntu.com/questions/1059057/error-could-not-determine-postgresql-version-from-10-4>`_
+
+7. `Django Tutorial by Docker <https://docs.docker.com/compose/django/>`_
+
 Modifications
 ==============
 
 I already have python installed for local development, and my django site is
 already setup.
+
+Changed psycopg2 dependency to have no version in ``requirements.txt``.
+
+.. code-block::
+
+    docker run -ti --rm -v /Users/nicholaspayne/projects/sight_word_explorer/kidlitai_deploy/web/:/data/web alpine:latest sh
+    apk add --update python3 python3-dev postgresql-client postgresql-dev build-base gettext vim
+    apk add cmd:pip3
+    pip3 install --upgrade pip
+    pip3 install -r requirements.txt
 
 Modified to execute in my project directory.
 
@@ -54,3 +68,12 @@ Installing ``requirements.txt`` also fails as follows:
     Error: could not determine PostgreSQL version from '12.3'
     ----------------------------------------
     ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+
+Fixed by:
+
+.. code-block::
+
+     pip3 install --upgrade setuptools
+     pip install -u psycopg2
+
+``pip install pyscopg2`` did not work.  ``-U ==2.6'' did not work.
