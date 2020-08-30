@@ -15,6 +15,8 @@ Resources
 
 7. `Django Tutorial by Docker <https://docs.docker.com/compose/django/>`_
 
+8. `Persistent Postgres Database <https://www.digitalocean.com/community/questions/how-to-create-a-persistent-data-volume-for-postgres-database-container-within-a-docker-project>`_
+
 Approach
 ==============
 
