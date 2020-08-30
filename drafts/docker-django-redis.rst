@@ -15,65 +15,172 @@ Resources
 
 7. `Django Tutorial by Docker <https://docs.docker.com/compose/django/>`_
 
-Modifications
+Approach
 ==============
 
-I already have python installed for local development, and my django site is
-already setup.
+So following resources #1 and #2 were both not successful.  I think most of relates to
+the fact that I was looking for an ultra specific and relatively complicated tutorial.
+If you are looking for a tutorial on django + redis + docker + postgres + gunicorn, 
+you likely already have 
+at least one of those pieces.  Probably django, but unsurprisingly they tutorials
+assume everything is from scratch.  They also do not generally take an incremental
+approach that identifies issues along the way.  It is the "big bang" approach often
+associated with  "Waterfall" style projects where multiple technologies will obviously
+integrated perfectly together without issue right at the end.
 
-Changed psycopg2 dependency to have no version in ``requirements.txt``.
+So after much pain, I took a step back simply looked at django and docker.
 
-.. code-block::
+I finally had some success with Resource #7.  So I plan to start from there and build
+to where I want to be.
 
-    docker run -ti --rm -v /Users/nicholaspayne/projects/sight_word_explorer/kidlitai_deploy/web/:/data/web alpine:latest sh
-    apk add --update python3 python3-dev postgresql-client postgresql-dev build-base gettext vim
-    apk add cmd:pip3
-    pip3 install --upgrade pip
-    pip3 install -r requirements.txt
+Deviations from Resource #7
+============================
 
-Modified to execute in my project directory.
+Additional Requirements
+--------------------------------
 
-.. code-block::
+I added a lot more content to ``requirements.txt`` because my existing django project
+has a lot more depdencies than just django.
 
-    docker run -ti --rm -v [ABSOLUTE PATH to web]:/data/web alpine:latest sh
-    / # cd data/web/
-    /data/web # apk add --update python3 python3-dev postgresql-client postgresql-dev build-base gettext vim
-    /data/web # pip3 install --upgrade pip
-    /data/web # pip3 install -r requirements.txt
+Existing Django Configuration
+----------------------------------------
 
-.. note:: Fill in your absolute path to your web folder.
+My django content is also in a directory that we will call ``django_project`` for this 
+example.  So I needed to modify ``command`` for the web stage in ``docker-compose.yml``.
 
-The above kind of looked like (at least to me) one big blob of commands
-I could simply copy and paste into the terminal.  Nope.  Run the docker
-command which effectively puts you into a shell in the container, then
-run each of the commands individually.
+I also need the database to be setup with my migrations.  So let's go ahead and create
+a bash script (``django_setup.sh``) for this stuff:
 
-Trouble with the first pip3 command:
+.. code-block:: bash
 
-.. code-block::
+    cd django_project
+    python manage.py migrate
+    python manage.py runserver 0.0.0.0:8000
 
-    sh: pip3: not found
+.. code-block:: yaml
 
-I checked and ``python3`` worked fine, so must just not have pip.  Googling, Resource
-#4 was not helpful.  #5 solved it, though, with:
+    version: '3'
+    
+    services:
+    db:
+        image: postgres
+        environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+    web:
+        build: .
+        command: bash ./django_setup.sh
+        volumes:
+        - .:/code
+        ports:
+        - "8000:8000"
+        depends_on:
+        - db
 
-.. code-block::
+Additions
+=========
 
-    apk add cmd:pip3
+Environment Variable File
+----------------------------
 
-Installing ``requirements.txt`` also fails as follows:
+I did like how Resource #3 did the environment variable file.  I adopted that method
+with modifications:
 
-.. code-block::
+``env``:
 
-    Error: could not determine PostgreSQL version from '12.3'
-    ----------------------------------------
-    ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+.. code-block:: bash
 
-Fixed by:
+    POSTGRES_DB=db_web
+    POSTGRES_USER=user_web
+    POSTGRES_PASSWORD=alksjdflkjdjjej
+    DB_SERVICE=db
+    DB_PORT=5432
 
-.. code-block::
+``docker-compose.yml``:
 
-     pip3 install --upgrade setuptools
-     pip install -u psycopg2
+.. code-block:: yaml
 
-``pip install pyscopg2`` did not work.  ``-U ==2.6'' did not work.
+    version: '3'
+    
+    services:
+        db:
+            image: postgres
+            env_file: env
+        web:
+            build: .
+            command: bash ./django_start.sh
+            volumes:
+            - .:/code
+            ports:
+            - "8000:8000"
+            depends_on:
+            - db
+            env_file: env
+
+.. note:: See the use of ``env`` in both services.
+
+I also liked how they implemented the django ``settings.py`` to allow
+local development with sqlite file.  So I adopted that:
+
+.. note:: The environment variable names here must also match the ``env`` file.
+
+.. code-block:: python
+
+    if 'POSTGRES_DB' in os.environ:
+        # Running the Docker image
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': os.environ['POSTGRES_DB'],
+                'USER': os.environ['POSTGRES_USER'],
+                'PASSWORD': os.environ['POSTGRES_PASSWORD'],
+                'HOST': os.environ['DB_SERVICE'],
+                'PORT': os.environ['DB_PORT']
+            }
+        }
+    else:
+        # Building the Docker image
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            }
+        }
+
+Redis and Celery
+----------------------------
+
+My django application utilizes celery via redis for long running tasks.
+I add the following to ``docker-compose.yml``:
+
+.. code-block:: yaml
+
+  redis:
+    restart: always
+    image: redis:latest
+    expose:
+      - "6379"
+
+  celery:
+    build: .
+    command: bash ./start_celery.sh
+    volumes:
+      - .:/code
+    depends_on:
+      - redis
+    env_file: env
+
+I also added a ``depends_on`` to service ``web`` for ``celery``.
+
+``start_celery.sh`` simply changes into the appropriate directory
+and starts the celery worker, i.e. ``celery worker -A ...``.
+
+With this setup, you also need to properly configure your django
+``settings.py`` something like this:
+
+.. code-block:: python
+
+    # celery
+    CELERY_BROKER_URL = 'redis://redis:6379'
+    CELERY_RESULT_BACKEND = 'redis://redis:6379'
