@@ -17,6 +17,12 @@ Resources
 
 8. `Persistent Postgres Database <https://www.digitalocean.com/community/questions/how-to-create-a-persistent-data-volume-for-postgres-database-container-within-a-docker-project>`_
 
+9. `Dockerizing Django with Postgres, Gunicorn, and Nginx <https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/>`_
+
+10. `docker-compose.yml documentation <https://docs.docker.com/compose/compose-file/#environment>`_
+
+11. `django manage documentation <https://docs.djangoproject.com/en/3.1/ref/django-admin/#flush>`_
+
 Approach
 ==============
 
@@ -122,33 +128,47 @@ with modifications:
 
 .. note:: See the use of ``env`` in both services.
 
-I also liked how they implemented the django ``settings.py`` to allow
+Resource #9 had a slick implementation of the django ``settings.py`` to allow
 local development with sqlite file.  So I adopted that:
 
 .. note:: The environment variable names here must also match the ``env`` file.
 
 .. code-block:: python
 
-    if 'POSTGRES_DB' in os.environ:
-        # Running the Docker image
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql',
-                'NAME': os.environ['POSTGRES_DB'],
-                'USER': os.environ['POSTGRES_USER'],
-                'PASSWORD': os.environ['POSTGRES_PASSWORD'],
-                'HOST': os.environ['DB_SERVICE'],
-                'PORT': os.environ['DB_PORT']
-            }
+    DATABASES = {
+        "default": {
+            "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+            "NAME": os.environ.get("POSTGRES_DB", os.path.join(BASE_DIR, "db.sqlite3")),
+            "USER": os.environ.get("POSTGRES_USER", "user"),
+            "PASSWORD": os.environ.get("POSTGRES_PASSWORD", "password"),
+            "HOST": os.environ.get("SQL_HOST", "localhost"),
+            "PORT": os.environ.get("SQL_PORT", "5432"),
         }
-    else:
-        # Building the Docker image
-        DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            }
-        }
+    }
+
+Resource #9 moves a few additional items to environment variables
+
+Additions to ``.env``:
+
+.. code-block:: bash
+
+    SECRET_KEY=crazy_long_string_of_nonsense
+    DEBUG=1
+    DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+
+And associated changes to ``settings.py``:
+
+.. code-block:: python
+
+    # SECURITY WARNING: keep the secret key used in production secret!
+    SECRET_KEY = os.environ.get('SECRET_KEY')
+
+    # SECURITY WARNING: don't run with debug turned on in production!
+    DEBUG = int(os.environ.get("DEBUG", default=0))
+
+    # 'DJANGO_ALLOWED_HOSTS' should be a single string of hosts with a space between each.
+    # For example: 'DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]'
+    ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
 
 Redis and Celery
 ----------------------------
@@ -186,3 +206,10 @@ With this setup, you also need to properly configure your django
     # celery
     CELERY_BROKER_URL = 'redis://redis:6379'
     CELERY_RESULT_BACKEND = 'redis://redis:6379'
+
+Postgres Startup issues
+----------------------------
+
+Resource #9 indicates that there may sometimes be issues with postgres
+startup.  I think I experience this once.  I could not use the provided
+logic on the first try.  I don't think ``nc`` was availble.
